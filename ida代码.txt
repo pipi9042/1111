@@ -1,0 +1,373 @@
+.text:082B7A14 ; =============== S U B R O U T I N E =======================================
+.text:082B7A14
+.text:082B7A14 ; Attributes: static bp-based frame
+.text:082B7A14
+.text:082B7A14 ; int __cdecl LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State_0 *L)
+.text:082B7A14                 public _ZN8LuaFnTbl23LuaFnGetPetDataIDByGUIDEP9lua_State
+.text:082B7A14 _ZN8LuaFnTbl23LuaFnGetPetDataIDByGUIDEP9lua_State proc near
+.text:082B7A14                                         ; DATA XREF: .data:LuaFnTbl::functbl¡ýo
+.text:082B7A14
+.text:082B7A14 var_450         = dword ptr -450h
+.text:082B7A14 var_44C         = dword ptr -44Ch
+.text:082B7A14 var_448         = qword ptr -448h
+.text:082B7A14 var_440         = qword ptr -440h
+.text:082B7A14 var_438         = word ptr -438h
+.text:082B7A14 var_434         = dword ptr -434h
+.text:082B7A14 var_424         = word ptr -424h
+.text:082B7A14 var_422         = word ptr -422h
+.text:082B7A14 guid            = PET_GUID_t ptr -420h
+.text:082B7A14 s               = byte ptr -418h
+.text:082B7A14 L               = dword ptr  8
+.text:082B7A14
+.text:082B7A14 ; __unwind { // ___gxx_personality_v0
+.text:082B7A14                 push    ebp
+.text:082B7A15                 mov     ebp, esp
+.text:082B7A17                 push    edi
+.text:082B7A18                 push    esi
+.text:082B7A19                 push    ebx
+.text:082B7A1A                 sub     esp, 44Ch
+.text:082B7A20                 mov     edi, [ebp+L]
+.text:082B7A23                 mov     ebx, 1
+.text:082B7A28                 lea     esi, [ebp+s]
+.text:082B7A2E
+.text:082B7A2E loc_82B7A2E:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+64¡ýj
+.text:082B7A2E L_0 = edi                               ; lua_State_0 *
+.text:082B7A2E                 test    L_0, L_0
+.text:082B7A30                 jz      loc_82B7C00
+.text:082B7A36                 sub     esp, 8
+.text:082B7A39                 push    ebx             ; index
+.text:082B7A3A                 push    L_0             ; L
+.text:082B7A3B ;   try {
+.text:082B7A3B                 call    lua_isnumber
+.text:082B7A40                 add     esp, 10h
+.text:082B7A43                 dec     eax
+.text:082B7A44                 jz      short loc_82B7A70
+.text:082B7A46                 sub     esp, 0Ch
+.text:082B7A49                 push    ebx
+.text:082B7A4A                 push    offset aLuafngetpettyp ; "LuaFnGetPetTypeByGUID"
+.text:082B7A4F                 push    offset format   ; "ERROR: [%s]Param %d is illegal!"
+.text:082B7A54                 push    200h            ; maxlen
+.text:082B7A59                 push    esi             ; s
+.text:082B7A5A                 call    _snprintf
+.text:082B7A5F                 add     esp, 20h
+.text:082B7A62
+.text:082B7A62 loc_82B7A62:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+204¡ýj
+.text:082B7A62                 sub     esp, 8
+.text:082B7A65                 push    esi             ; msg
+.text:082B7A66                 push    3               ; logid
+.text:082B7A68                 call    _Z8CacheLogiPKcz ; CacheLog(int,char const*,...)
+.text:082B7A6D                 add     esp, 10h
+.text:082B7A70
+.text:082B7A70 loc_82B7A70:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+30¡üj
+.text:082B7A70                 inc     ebx
+.text:082B7A71                 mov     eax, 4
+.text:082B7A76                 cmp     eax, ebx
+.text:082B7A78                 jge     short loc_82B7A2E
+.text:082B7A7A                 sub     esp, 8
+.text:082B7A7D                 push    1               ; index
+.text:082B7A7F                 push    L_0             ; L
+.text:082B7A80                 call    lua_tonumber
+.text:082B7A85                 fnstcw  [ebp+var_422]
+.text:082B7A8B                 mov     ax, [ebp+var_422]
+.text:082B7A92                 mov     ah, 0Ch
+.text:082B7A94                 pop     esi
+.text:082B7A95                 mov     [ebp+var_424], ax
+.text:082B7A9C                 pop     eax
+.text:082B7A9D                 push    2               ; index
+.text:082B7A9F                 fldcw   [ebp+var_424]
+.text:082B7AA5                 fistp   [ebp+var_438]
+.text:082B7AAB                 fldcw   [ebp+var_422]
+.text:082B7AB1                 push    L_0             ; L
+.text:082B7AB2                 call    lua_tonumber
+.text:082B7AB7                 fnstcw  [ebp+var_422]
+.text:082B7ABD                 mov     ax, [ebp+var_422]
+.text:082B7AC4                 mov     ah, 0Ch
+.text:082B7AC6                 pop     ecx
+.text:082B7AC7                 pop     ebx
+.text:082B7AC8                 mov     [ebp+var_424], ax
+.text:082B7ACF                 fldcw   [ebp+var_424]
+.text:082B7AD5                 fistp   [ebp+var_434]
+.text:082B7ADB                 fldcw   [ebp+var_422]
+.text:082B7AE1                 push    3               ; index
+.text:082B7AE3                 mov     esi, [ebp+var_434]
+.text:082B7AE9 selfId = esi                            ; ObjID_t
+.text:082B7AE9                 push    L_0             ; L
+.text:082B7AEA                 call    lua_tonumber
+.text:082B7AEF                 fnstcw  [ebp+var_422]
+.text:082B7AF5                 mov     ax, [ebp+var_422]
+.text:082B7AFC                 mov     ah, 0Ch
+.text:082B7AFE                 mov     [ebp+var_424], ax
+.text:082B7B05                 pop     eax
+.text:082B7B06                 pop     edx
+.text:082B7B07                 push    4               ; index
+.text:082B7B09                 fldcw   [ebp+var_424]
+.text:082B7B0F                 fistp   [ebp+var_440]
+.text:082B7B15                 fldcw   [ebp+var_422]
+.text:082B7B1B                 push    L_0             ; L
+.text:082B7B1C                 call    lua_tonumber
+.text:082B7B1C ;   } // starts at 82B7A3B
+.text:082B7B21                 fnstcw  [ebp+var_422]
+.text:082B7B27                 mov     ax, [ebp+var_422]
+.text:082B7B2E                 mov     ah, 0Ch
+.text:082B7B30                 pop     ebx
+.text:082B7B31                 mov     [ebp+var_424], ax
+.text:082B7B38                 movsx   edx, [ebp+var_438]
+.text:082B7B3F                 pop     eax             ; this
+.text:082B7B40                 push    edx
+.text:082B7B41                 fldcw   [ebp+var_424]
+.text:082B7B47                 fistp   [ebp+var_448]
+.text:082B7B4D                 fldcw   [ebp+var_422]
+.text:082B7B53                 mov     [ebp+var_450], edx
+.text:082B7B59                 push    ds:g_pSceneManager ; SceneID
+.text:082B7B5F ;   try {
+.text:082B7B5F                 call    _ZN12SceneManager8GetSceneEs ; SceneManager::GetScene(short)
+.text:082B7B64                 add     esp, 10h
+.text:082B7B67                 test    eax, eax
+.text:082B7B69 pScene = eax                            ; Scene_1 *
+.text:082B7B69                 mov     ebx, pScene
+.text:082B7B6B pScene = ebx                            ; Scene_1 *
+.text:082B7B6B                 jz      loc_82B7CE2
+.text:082B7B71                 call    _ZN18ThreadValueManager18GetCurrentThreadIDEv ; ThreadValueManager::GetCurrentThreadID(void)
+.text:082B7B76                 cmp     eax, [pScene+2C1Ch]
+.text:082B7B7C                 jnz     loc_82B7D1A
+.text:082B7B82
+.text:082B7B82 loc_82B7B82:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+32A¡ýj
+.text:082B7B82                 cmp     selfId, 752Fh
+.text:082B7B88                 mov     eax, [pScene+2Ch]
+.text:082B7B8B                 ja      loc_82B7D0B
+.text:082B7B91                 mov     pScene, [eax+selfId*4]
+.text:082B7B94                 test    ebx, ebx
+.text:082B7B96                 jz      loc_82B7D0B
+.text:082B7B9C                 sub     esp, 0Ch
+.text:082B7B9F                 mov     eax, [ebx]
+.text:082B7BA1                 push    ebx
+.text:082B7BA2                 call    dword ptr [eax+8]
+.text:082B7BA2 ;   } // starts at 82B7B5F
+.text:082B7BA5                 add     esp, 10h
+.text:082B7BA8                 dec     eax
+.text:082B7BA9                 jz      loc_82B7D43
+.text:082B7BAF
+.text:082B7BAF loc_82B7BAF:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+2BD¡ýj
+.text:082B7BAF                                         ; LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+2F2¡ýj ...
+.text:082B7BAF pPetItem = ebx                          ; Item_0 *
+.text:082B7BAF                 push    eax
+.text:082B7BB0                 push    0BFF00000h
+.text:082B7BB5                 push    0               ; n
+.text:082B7BB7                 push    L_0             ; L
+.text:082B7BB8 ;   try {
+.text:082B7BB8                 call    lua_pushnumber
+.text:082B7BB8 ;   } // starts at 82B7BB8
+.text:082B7BBD                 mov     eax, 1
+.text:082B7BC2                 jmp     short loc_82B7BF6
+.text:082B7BC4 ; ---------------------------------------------------------------------------
+.text:082B7BC4 ;   catch(...) // owned by 82B7A3B
+.text:082B7BC4 ;   catch(...) // owned by 82B7BB8
+.text:082B7BC4 ;   catch(...) // owned by 82B7CCC
+.text:082B7BC4                 mov     pPetItem, eax
+.text:082B7BC6
+.text:082B7BC6 loc_82B7BC6:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+2C9¡ýj
+.text:082B7BC6                 sub     esp, 0Ch
+.text:082B7BC9                 push    ebx             ; void *
+.text:082B7BCA                 call    ___cxa_begin_catch
+.text:082B7BCF                 mov     dword ptr [esp], offset _ZZN8LuaFnTbl23LuaFnGetPetDataIDByGUIDEP9lua_StateE19__PRETTY_FUNCTION__ ; "int LuaFnTbl::LuaFnGetPetDataIDByGUID(l"...
+.text:082B7BD6                 push    0A92h
+.text:082B7BDB                 push    offset file     ; "./Script/LuaFnTbl_Pet.h"
+.text:082B7BE0                 push    offset msg      ; msg
+.text:082B7BE5                 push    2               ; logid
+.text:082B7BE7 ;   try {
+.text:082B7BE7                 call    _Z8CacheLogiPKcz ; CacheLog(int,char const*,...)
+.text:082B7BE7 ;   } // starts at 82B7BE7
+.text:082B7BEC                 add     esp, 20h
+.text:082B7BEF                 call    ___cxa_end_catch
+.text:082B7BF4                 xor     eax, eax
+.text:082B7BF6
+.text:082B7BF6 loc_82B7BF6:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+1AE¡üj
+.text:082B7BF6                                         ; LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+3D5¡ýj
+.text:082B7BF6 pPetItem = ebx                          ; Item_0 *
+.text:082B7BF6                 lea     esp, [ebp-0Ch]
+.text:082B7BF9                 pop     pPetItem
+.text:082B7BFA                 pop     selfId
+.text:082B7BFB                 pop     L_0
+.text:082B7BFC                 leave
+.text:082B7BFD                 retn
+.text:082B7BFD ; ---------------------------------------------------------------------------
+.text:082B7BFE L_0 = edi                               ; lua_State_0 *
+.text:082B7BFE                 align 10h
+.text:082B7C00
+.text:082B7C00 loc_82B7C00:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+1C¡üj
+.text:082B7C00                 push    offset aLuafngetpettyp ; "LuaFnGetPetTypeByGUID"
+.text:082B7C05                 push    offset aErrorSLuaState ; "ERROR: [%s] Lua_State==NULL!"
+.text:082B7C0A                 push    200h            ; maxlen
+.text:082B7C0F                 push    esi             ; s
+.text:082B7C10                 call    _snprintf
+.text:082B7C15                 add     esp, 10h
+.text:082B7C18                 jmp     loc_82B7A62
+.text:082B7C18 ; ---------------------------------------------------------------------------
+.text:082B7C1D selfId = esi                            ; ObjID_t
+.text:082B7C1D                 align 10h
+.text:082B7C20 ;   cleanup() // owned by 82B7BE7
+.text:082B7C20                 mov     ebx, eax
+.text:082B7C22                 call    ___cxa_end_catch
+.text:082B7C27                 sub     esp, 0Ch
+.text:082B7C2A                 push    ebx
+.text:082B7C2B                 call    __Unwind_Resume
+.text:082B7C30 ; ---------------------------------------------------------------------------
+.text:082B7C30 pPetItem = ebx                          ; Item_0 *
+.text:082B7C30 ;   catch(...) // owned by 82B7B5F
+.text:082B7C30 ;   catch(...) // owned by 82B7CFE
+.text:082B7C30                 sub     esp, 0Ch
+.text:082B7C33                 push    eax             ; void *
+.text:082B7C34                 call    ___cxa_begin_catch
+.text:082B7C39                 mov     dword ptr [esp], offset _ZZN8LuaFnTbl23LuaFnGetPetDataIDByGUIDEP9lua_StateE19__PRETTY_FUNCTION__ ; "int LuaFnTbl::LuaFnGetPetDataIDByGUID(l"...
+.text:082B7C40                 push    0A8Fh
+.text:082B7C45                 push    offset file     ; "./Script/LuaFnTbl_Pet.h"
+.text:082B7C4A                 push    offset aStackEndhumand ; "Stack: ENDHUMANDEFINE %s %d %s"
+.text:082B7C4F                 push    2               ; logid
+.text:082B7C51 ;   try {
+.text:082B7C51                 call    _Z8CacheLogiPKcz ; CacheLog(int,char const*,...)
+.text:082B7C56                 add     esp, 20h
+.text:082B7C59                 cmp     [ebp+var_438], 3FFh
+.text:082B7C62                 ja      short loc_82B7CCC
+.text:082B7C64                 mov     edx, [ebp+var_450]
+.text:082B7C6A                 lea     eax, [edx+edx*2]
+.text:082B7C6D                 mov     edx, eax
+.text:082B7C6F                 shl     edx, 6
+.text:082B7C72                 add     eax, edx
+.text:082B7C74                 shl     eax, 4
+.text:082B7C77                 add     eax, [ebp+var_450]
+.text:082B7C7D                 lea     eax, g_aSceneStack.m_aStackNode.m_szFuncName[eax*4]
+.text:082B7C84                 mov     edx, [eax+30C0h]
+.text:082B7C8A                 test    edx, edx
+.text:082B7C8C                 mov     [ebp+var_44C], 0
+.text:082B7C96                 jle     short loc_82B7CCC
+.text:082B7C98                 mov     selfId, eax
+.text:082B7C9A                 mov     pPetItem, eax
+.text:082B7C9C
+.text:082B7C9C loc_82B7C9C:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+2B6¡ýj
+.text:082B7C9C                 push    ebx
+.text:082B7C9D                 push    dword ptr [ebx+100h]
+.text:082B7CA3                 push    offset aStackDS ; "Stack:%d %s"
+.text:082B7CA8                 push    2               ; logid
+.text:082B7CAA                 call    _Z8CacheLogiPKcz ; CacheLog(int,char const*,...)
+.text:082B7CAA ;   } // starts at 82B7C51
+.text:082B7CAF                 inc     [ebp+var_44C]
+.text:082B7CB5                 mov     eax, [ebp+var_44C]
+.text:082B7CBB                 add     esp, 10h
+.text:082B7CBE                 add     ebx, 104h
+.text:082B7CC4                 cmp     [esi+30C0h], eax
+.text:082B7CCA                 jg      short loc_82B7C9C
+.text:082B7CCC
+.text:082B7CCC loc_82B7CCC:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+24E¡üj
+.text:082B7CCC                                         ; LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+282¡üj
+.text:082B7CCC selfId = esi                            ; ObjID_t
+.text:082B7CCC pPetItem = ebx                          ; Item_0 *
+.text:082B7CCC ;   try {
+.text:082B7CCC                 call    ___cxa_end_catch
+.text:082B7CCC ;   } // starts at 82B7CCC
+.text:082B7CD1                 jmp     loc_82B7BAF
+.text:082B7CD6 ; ---------------------------------------------------------------------------
+.text:082B7CD6 ;   cleanup() // owned by 82B7C51
+.text:082B7CD6                 mov     pPetItem, eax
+.text:082B7CD8                 call    ___cxa_end_catch
+.text:082B7CDD                 jmp     loc_82B7BC6
+.text:082B7CE2 ; ---------------------------------------------------------------------------
+.text:082B7CE2
+.text:082B7CE2 loc_82B7CE2:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+157¡üj
+.text:082B7CE2 pScene = ebx                            ; Scene_1 *
+.text:082B7CE2                 sub     esp, 0Ch
+.text:082B7CE5                 push    offset aSceneIdErrorlu ; "Scene ID ErrorLuaFnGetPetTypeByGUID"
+.text:082B7CEA                 push    offset expr     ; "pScene"
+.text:082B7CEF
+.text:082B7CEF loc_82B7CEF:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+304¡ýj
+.text:082B7CEF                 push    offset _ZZN8LuaFnTbl23LuaFnGetPetDataIDByGUIDEP9lua_StateE19__PRETTY_FUNCTION__ ; "int LuaFnTbl::LuaFnGetPetDataIDByGUID(l"...
+.text:082B7CF4                 push    0A84h           ; line
+.text:082B7CF9                 push    offset file     ; "./Script/LuaFnTbl_Pet.h"
+.text:082B7CFE ;   try {
+.text:082B7CFE                 call    _Z12__assertex__PKcjS0_S0_S0_ ; __assertex__(char const*,uint,char const*,char const*,char const*)
+.text:082B7D03 ; ---------------------------------------------------------------------------
+.text:082B7D03                 add     esp, 20h
+.text:082B7D06                 jmp     loc_82B7BAF
+.text:082B7D0B ; ---------------------------------------------------------------------------
+.text:082B7D0B
+.text:082B7D0B loc_82B7D0B:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+177¡üj
+.text:082B7D0B                                         ; LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+182¡üj
+.text:082B7D0B                 sub     esp, 0Ch
+.text:082B7D0E                 push    offset aSelfidErrorlua ; "selfId ErrorLuaFnGetPetTypeByGUID"
+.text:082B7D13                 push    offset aPobj    ; "pObj"
+.text:082B7D18                 jmp     short loc_82B7CEF
+.text:082B7D1A ; ---------------------------------------------------------------------------
+.text:082B7D1A
+.text:082B7D1A loc_82B7D1A:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+168¡üj
+.text:082B7D1A                 sub     esp, 0Ch
+.text:082B7D1D                 push    offset aThreadvalueman_4 ; "ThreadValueManager::GetCurrentThreadID("...
+.text:082B7D22                 push    offset aThreadvalueman ; "ThreadValueManager::GetCurrentThreadID("...
+.text:082B7D27                 push    offset _ZZN8LuaFnTbl23LuaFnGetPetDataIDByGUIDEP9lua_StateE19__PRETTY_FUNCTION__ ; "int LuaFnTbl::LuaFnGetPetDataIDByGUID(l"...
+.text:082B7D2C                 push    0A84h           ; line
+.text:082B7D31                 push    offset file     ; "./Script/LuaFnTbl_Pet.h"
+.text:082B7D36                 call    _Z12__assertex__PKcjS0_S0_S0_ ; __assertex__(char const*,uint,char const*,char const*,char const*)
+.text:082B7D3B ; ---------------------------------------------------------------------------
+.text:082B7D3B                 add     esp, 20h
+.text:082B7D3E                 jmp     loc_82B7B82
+.text:082B7D43 ; ---------------------------------------------------------------------------
+.text:082B7D43
+.text:082B7D43 loc_82B7D43:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+195¡üj
+.text:082B7D43                 sub     esp, 0Ch
+.text:082B7D46                 push    ebx             ; this
+.text:082B7D47                 call    _ZN9Obj_Human10IsCanLogicEv ; Obj_Human::IsCanLogic(void)
+.text:082B7D4C                 add     esp, 10h
+.text:082B7D4F                 test    eax, eax
+.text:082B7D51                 jnz     short loc_82B7D77
+.text:082B7D53                 sub     esp, 0Ch
+.text:082B7D56                 push    offset aIscanlogicTest ; "IsCanLogic() test return falseLuaFnGetP"...
+.text:082B7D5B                 push    offset aPhumanIscanlog ; "pHuman->IsCanLogic()"
+.text:082B7D60                 push    offset _ZZN8LuaFnTbl23LuaFnGetPetDataIDByGUIDEP9lua_StateE19__PRETTY_FUNCTION__ ; "int LuaFnTbl::LuaFnGetPetDataIDByGUID(l"...
+.text:082B7D65                 push    0A84h           ; line
+.text:082B7D6A                 push    offset file     ; "./Script/LuaFnTbl_Pet.h"
+.text:082B7D6F                 call    _Z12__assertex__PKcjS0_S0_S0_ ; __assertex__(char const*,uint,char const*,char const*,char const*)
+.text:082B7D74 ; ---------------------------------------------------------------------------
+.text:082B7D74                 add     esp, 20h
+.text:082B7D77
+.text:082B7D77 loc_82B7D77:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+33D¡üj
+.text:082B7D77                 mov     edx, dword ptr [ebp+var_448]
+.text:082B7D7D                 mov     eax, dword ptr [ebp+var_440]
+.text:082B7D83                 mov     [ebp+guid.m_uLowSection], edx
+.text:082B7D89                 push    ecx
+.text:082B7D8A                 push    [ebp+guid.m_uLowSection]
+.text:082B7D90                 mov     [ebp+guid.m_uHighSection], eax
+.text:082B7D96                 push    [ebp+guid.m_uHighSection] ; guid
+.text:082B7D9C                 push    ebx             ; this
+.text:082B7D9D                 call    _ZN9Obj_Human10GetPetItemE10PET_GUID_t ; Obj_Human::GetPetItem(PET_GUID_t)
+.text:082B7DA2                 add     esp, 10h
+.text:082B7DA5                 test    eax, eax
+.text:082B7DA7 pPetItem = eax                          ; Item_0 *
+.text:082B7DA7                 mov     ebx, pPetItem
+.text:082B7DA9 pPetItem = ebx                          ; Item_0 *
+.text:082B7DA9                 jz      loc_82B7BAF
+.text:082B7DAF                 mov     eax, [eax+8]
+.text:082B7DB2                 test    eax, eax
+.text:082B7DB4                 jnz     short loc_82B7DD5
+.text:082B7DB6                 push    offset aMPpet   ; "m_pPet"
+.text:082B7DBB                 push    offset _ZZNK4Item9GetDataIDEvE19__PRETTY_FUNCTION___9 ; func
+.text:082B7DC0                 push    3E2h            ; line
+.text:082B7DC5                 push    offset aItemItemInl ; "./Item/Item.inl"
+.text:082B7DCA                 call    _Z10__assert__PKcjS0_S0_ ; __assert__(char const*,uint,char const*,char const*)
+.text:082B7DCF ; ---------------------------------------------------------------------------
+.text:082B7DCF                 add     esp, 10h
+.text:082B7DD2                 mov     eax, [pPetItem+8]
+.text:082B7DD5
+.text:082B7DD5 loc_82B7DD5:                            ; CODE XREF: LuaFnTbl::LuaFnGetPetDataIDByGUID(lua_State *)+3A0¡üj
+.text:082B7DD5                 fild    dword ptr [eax+10h]
+.text:082B7DD8                 sub     esp, 0Ch
+.text:082B7DDB                 fstp    qword ptr [esp] ; n
+.text:082B7DDE                 push    L_0             ; L
+.text:082B7DDF                 call    lua_pushnumber
+.text:082B7DDF ;   } // starts at 82B7CFE
+.text:082B7DE4                 mov     eax, 1
+.text:082B7DE9                 jmp     loc_82B7BF6
+.text:082B7DE9 ; } // starts at 82B7A14
+.text:082B7DE9 _ZN8LuaFnTbl23LuaFnGetPetDataIDByGUIDEP9lua_State endp ; sp-analysis failed
+.text:082B7DE9
+.text:082B7DE9 ; ---------------------------------------------------------------------------
+.text:082B7DEE                 db  89h
+.text:082B7DEF                 db 0F6h
+.text:082B7DF0
