@@ -100,7 +100,7 @@ void LuaCFuncRegister::RegisterCFunction(DWORD* lua_state) {
     // RegisterFunction_funcPtr(*lua_state, (void*)"Lua_GetItemPacketTemporary", (int)&Lua_GetItemPacketTemporary);//�����ȡ����
     // RegisterFunction_funcPtr(*lua_state, (void*)"Lua_GetItemTileMax", (int)&Lua_GetItemTileMax);//��Ʒ��������
     // RegisterFunction_funcPtr(*lua_state, (void*)"Lua_DelItemByPosCount", (int)&Lua_DelItemByPosCount);
-    RegisterFunction_funcPtr(*lua_state, (void*)"LuaFnAskWashKfsSkillPiPiFix", (int)&LuaFnAskWashKfsSkillPiPiFix);//KFS技能洗练修复
+    RegisterFunction_funcPtr(*lua_state, (void*)"LuaFnAskWashKfsSkillPiPiFix", (int)&LuaFnAskWashKfsSkillPiPiFix_Wrapper);//KFS技能洗练修复
 }
 
 
@@ -365,20 +365,24 @@ int LuaFnAskWashKfsSkillPiPiFix(int player, int item) {
         void* currentIter = reinterpret_cast<void*>(item); // Get item iterator
         int currentSkillIndex = 0;
         const int MAX_KFS_SKILLS = 3;
+        const int MAX_ITERATION_ATTEMPTS = 10; // Safety limit to prevent infinite loops
+        
+        LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Starting skill washing for player %d, item %d", player, item);
         
         // Main skill processing loop based on assembly analysis at loc_8F8157
-        for (int skillLoop = 0; skillLoop < MAX_KFS_SKILLS; skillLoop++) {
+        for (int skillLoop = 0; skillLoop < MAX_ITERATION_ATTEMPTS && currentSkillIndex < MAX_KFS_SKILLS; skillLoop++) {
             // Fix #1: Correct skill ID retrieval with double dereference
             // Original problem: int newSkillId = *(int*)((char*)currentIter + 0x28);
             // Fixed: Use double dereference as shown in assembly
             int** skillIdPtr = (int**)((char*)currentIter + 0x28);
             if (!skillIdPtr || !*skillIdPtr) {
-                LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Invalid skill ID pointer at offset 0x28");
+                LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Invalid skill ID pointer at offset 0x28, iteration %d", skillLoop);
                 continue;
             }
             int newSkillId = **skillIdPtr; // Double dereference
             
             if (newSkillId <= 0) {
+                LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Invalid skill ID %d, skipping", newSkillId);
                 continue; // Skip invalid skill IDs
             }
             
@@ -409,13 +413,15 @@ int LuaFnAskWashKfsSkillPiPiFix(int player, int item) {
                     currentIter = (char*)currentIter + 0x30; // Move to next skill entry
                 } else {
                     LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Failed to set skill %d, result: %d", newSkillId, setResult);
+                    // Don't increment currentSkillIndex on failure
                 }
+            } else if (!canUseSkill) {
+                LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Skill %d cannot be used (duplicate)", newSkillId);
             }
-            
-            // Break if we've set all skills
-            if (currentSkillIndex >= MAX_KFS_SKILLS) {
-                break;
-            }
+        }
+        
+        if (currentSkillIndex == 0) {
+            LogDebug(2, "LuaFnAskWashKfsSkillPiPiFix: Warning - No skills were successfully set");
         }
         
         LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Completed with %d skills set", currentSkillIndex);
@@ -428,5 +434,47 @@ int LuaFnAskWashKfsSkillPiPiFix(int player, int item) {
     } catch (...) {
         LogDebug(1, "LuaFnAskWashKfsSkillPiPiFix: Unknown exception caught");
         return -1;
+    }
+}
+
+// Lua wrapper for the KFS skill washing function
+int LuaFnAskWashKfsSkillPiPiFix_Wrapper(void* lua_state) {
+    try {
+        if (!lua_state) {
+            LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix_Wrapper: Invalid lua_state");
+            return 0;
+        }
+
+        // Get parameters from Lua stack (assuming player and item are passed as integers)
+        int L = reinterpret_cast<int>(lua_state);
+        
+        // Parameter validation - expecting 2 parameters
+        // Parameter 1: player (scene ID or player ID)
+        // Parameter 2: item (item ID or item pointer)
+        double playerParam = lua_tonumber(L, 1);
+        double itemParam = lua_tonumber(L, 2);
+        
+        int player = static_cast<int>(playerParam);
+        int item = static_cast<int>(itemParam);
+        
+        LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix_Wrapper: Called with player=%d, item=%d", player, item);
+        
+        // Call the actual implementation
+        int result = LuaFnAskWashKfsSkillPiPiFix(player, item);
+        
+        // Push result back to Lua
+        lua_pushnumber(L, static_cast<double>(result));
+        
+        LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix_Wrapper: Returning result=%d", result);
+        return 1; // Number of return values
+        
+    } catch (const std::exception& e) {
+        LogDebug(1, "LuaFnAskWashKfsSkillPiPiFix_Wrapper: Exception caught: %s", e.what());
+        lua_pushnumber(reinterpret_cast<int>(lua_state), -1.0);
+        return 1;
+    } catch (...) {
+        LogDebug(1, "LuaFnAskWashKfsSkillPiPiFix_Wrapper: Unknown exception caught");
+        lua_pushnumber(reinterpret_cast<int>(lua_state), -1.0);
+        return 1;
     }
 }

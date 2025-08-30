@@ -22,6 +22,9 @@ void Send_PacketTemporaryData_Client(int a1, void* src, int pos, int type);
 // KFS Skill washing function
 int LuaFnAskWashKfsSkillPiPiFix(int player, int item);
 
+// Lua wrapper for KFS skill washing function
+int LuaFnAskWashKfsSkillPiPiFix_Wrapper(void* lua_state);
+
 // Helper functions for KFS skill management
 int Item_GetKfsSkillData(int item, unsigned short index);
 int Kfs_GetSkillID(int player, int index);
