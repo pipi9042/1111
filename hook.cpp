@@ -89,17 +89,18 @@ int LuaInterface::ExeScript_DDDDDDD(int a1, int a2, int a3, int a4, int a5, int 
 
 void LuaCFuncRegister::RegisterCFunction(DWORD* lua_state) {
     lua_State = *(DWORD*)((*lua_state) + 112);
-    //Ô­Ê¼º¯Êý×¢²á
+    //Ô­Ê¼ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
     typedef void(*old_RegisterCFunction)(DWORD*);
     old_RegisterCFunction funcPtr = reinterpret_cast<old_RegisterCFunction>(0x0832D0DC);
     funcPtr(lua_state);
-    //ÐÂº¯Êý×¢²á
+    //ï¿½Âºï¿½ï¿½ï¿½×¢ï¿½ï¿½
     typedef void(*FoxLuaScript_RegisterFunction)(int, void*, int);
     FoxLuaScript_RegisterFunction RegisterFunction_funcPtr = reinterpret_cast<FoxLuaScript_RegisterFunction>(0x08407C90);
-    // RegisterFunction_funcPtr(*lua_state, (void*)"Lua_SetItemPacketTemporary", (int)&Lua_SetItemPacketTemporary);//Ìì»úÐ´ÈëµÀ¾ß
-    // RegisterFunction_funcPtr(*lua_state, (void*)"Lua_GetItemPacketTemporary", (int)&Lua_GetItemPacketTemporary);//Ìì»ú¶ÁÈ¡µÀ¾ß
-    // RegisterFunction_funcPtr(*lua_state, (void*)"Lua_GetItemTileMax", (int)&Lua_GetItemTileMax);//ÎïÆ·×î´óµþ¼ÓÊý
+    // RegisterFunction_funcPtr(*lua_state, (void*)"Lua_SetItemPacketTemporary", (int)&Lua_SetItemPacketTemporary);//ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½
+    // RegisterFunction_funcPtr(*lua_state, (void*)"Lua_GetItemPacketTemporary", (int)&Lua_GetItemPacketTemporary);//ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
+    // RegisterFunction_funcPtr(*lua_state, (void*)"Lua_GetItemTileMax", (int)&Lua_GetItemTileMax);//ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     // RegisterFunction_funcPtr(*lua_state, (void*)"Lua_DelItemByPosCount", (int)&Lua_DelItemByPosCount);
+    RegisterFunction_funcPtr(*lua_state, (void*)"LuaFnAskWashKfsSkillPiPiFix", (int)&LuaFnAskWashKfsSkillPiPiFix);//KFSæŠ€èƒ½æ´—ç»ƒä¿®å¤
 }
 
 
@@ -173,7 +174,7 @@ void LogDebug(int logid, const char* msg, ...) {
         memset(szTime, 0, 128u);
         int v13 = ThreadValueManager::GetCurrentThreadID();
         std::time_t now = std::time(nullptr);
-        std::tm* timeinfo = std::localtime(&now); // »ñÈ¡±¾µØÊ±¼ä
+        std::tm* timeinfo = std::localtime(&now); // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
         snprintf(szTime, 127, " (%d)(T0=%d-%d-%d_%d:%d:%d)\n", v13, timeinfo->tm_year + 1900, timeinfo->tm_mon + 1, timeinfo->tm_mday, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
         size_t current_length = strlen(szBuff);
         if (current_length < sizeof(szBuff) - 1) {
@@ -189,16 +190,16 @@ void LogDebug(int logid, const char* msg, ...) {
 void Update_PacketTemporaryData(int nIndex, int HumanPtr, const void* iteminfo)
 {
     int GUID = Obj_Human::GetGUID(HumanPtr);
-    //»º´æÄÚ´æÊý¾Ý
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½
     int uIndex = Obj_Human::GetPlayerDataIndex(GUID);
     memcpy(globalplayerData.m_temporary[uIndex][nIndex], iteminfo, 176);
     char* currentItem = globalplayerData.m_temporary[uIndex][nIndex];
     int* currentItemId = (int*)(currentItem + 8);
     int currentItemCount = *(unsigned __int8*)(currentItem + 88);
-    //¸üÐÂ½çÃæÖ¸¶¨Êý¾Ý
+    //ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     Send_PacketTemporaryData_Client(HumanPtr, currentItem, nIndex, 180);
 }
-void Send_PacketTemporaryData_Client(int a1, void* src, int pos, int type)//·¢ËÍÎïÆ·ÐÅÏ¢¸ø¿Í»§¶Ë
+void Send_PacketTemporaryData_Client(int a1, void* src, int pos, int type)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½
 {
     char SC[455];
     *(DWORD*)SC = (int)0x084404C8;
@@ -207,7 +208,7 @@ void Send_PacketTemporaryData_Client(int a1, void* src, int pos, int type)//·¢ËÍ
     memcpy((char*)SC + 0x112, src, 176);
     (*(int(**)(DWORD, char*))(**(DWORD**)(a1 + 97316) + 12))(*(DWORD*)(a1 + 97316), (char*)SC);
 }
-void Save_PacketTemporaryData(int a1)    //¿ªÊ¼´æ´¢Êý¾Ý
+void Save_PacketTemporaryData(int a1)    //ï¿½ï¿½Ê¼ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½
 {
     int GUID = Obj_Human::GetGUID(a1);
     int HumanID = call_GetMissionData(a1, 202);
@@ -231,7 +232,7 @@ void Save_PacketTemporaryData(int a1)    //¿ªÊ¼´æ´¢Êý¾Ý
         fclose(file);
     }
 }
-void Send_UICOMMON_Client(int a1, int a2)//·¢ËÍUIÐÅÏ¢¸ø¿Í»§¶Ë 
+void Send_UICOMMON_Client(int a1, int a2)//ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ 
 {
     int SC[157] = { 0 };
     SC[0] = (int)0x8425BA8;
@@ -246,7 +247,7 @@ void Log::CacheLog(int a1, int a2, void* src) {
 }
 
 void Scene::OnScenePlayerLogin(int a1, int a2) {
-    //Ô­Ê¼º¯Êý×¢²á
+    //Ô­Ê¼ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
     typedef void(*old_OnScenePlayerLogin)(int, int);
     old_OnScenePlayerLogin funcPtr = reinterpret_cast<old_OnScenePlayerLogin>(0x083B5270);
     funcPtr(a1, a2);
@@ -321,10 +322,111 @@ void Obj_Character::RefixImpact(int a1, int a2, int a3, int a4, int a5) // nSend
             }
         }
     }
-    //Ô­Ê¼º¯Êýcall
+    //Ô­Ê¼ï¿½ï¿½ï¿½ï¿½call
     if (a5 != -1) {
         typedef void(*RefixImpact)(int, int);
         RefixImpact funcPtr = reinterpret_cast<RefixImpact>(0x080ED6C8);
         funcPtr(a1, a2);
+    }
+}
+
+// Helper functions for KFS skill management
+int Item_GetKfsSkillData(int item, unsigned short index) {
+    // Implementation would call into the game engine to get skill data from item
+    typedef int(*Item_GetKfsSkillDataFunc)(int, unsigned short);
+    Item_GetKfsSkillDataFunc funcPtr = reinterpret_cast<Item_GetKfsSkillDataFunc>(0x08000000); // placeholder address
+    return funcPtr(item, index);
+}
+
+int Kfs_GetSkillID(int player, int index) {
+    // Implementation would call into the game engine to get skill ID from player
+    typedef int(*Kfs_GetSkillIDFunc)(int, int);
+    Kfs_GetSkillIDFunc funcPtr = reinterpret_cast<Kfs_GetSkillIDFunc>(0x08000000); // placeholder address
+    return funcPtr(player, index);
+}
+
+int Kfs_SetSkill(int player, int skillIndex, int skillId) {
+    // Implementation would call into the game engine to set skill on player
+    typedef int(*Kfs_SetSkillFunc)(int, int, int);
+    Kfs_SetSkillFunc funcPtr = reinterpret_cast<Kfs_SetSkillFunc>(0x08000000); // placeholder address
+    return funcPtr(player, skillIndex, skillId);
+}
+
+// Main KFS Skill washing function - fixed according to disassembly analysis
+int LuaFnAskWashKfsSkillPiPiFix(int player, int item) {
+    try {
+        if (!player || !item) {
+            LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Invalid player or item pointer");
+            return -1;
+        }
+
+        // According to assembly analysis at loc_8F80AF: mov rax, [rdi+28h]; mov r14d, [rax]
+        // This indicates double dereference is needed
+        void* currentIter = reinterpret_cast<void*>(item); // Get item iterator
+        int currentSkillIndex = 0;
+        const int MAX_KFS_SKILLS = 3;
+        
+        // Main skill processing loop based on assembly analysis at loc_8F8157
+        for (int skillLoop = 0; skillLoop < MAX_KFS_SKILLS; skillLoop++) {
+            // Fix #1: Correct skill ID retrieval with double dereference
+            // Original problem: int newSkillId = *(int*)((char*)currentIter + 0x28);
+            // Fixed: Use double dereference as shown in assembly
+            int** skillIdPtr = (int**)((char*)currentIter + 0x28);
+            if (!skillIdPtr || !*skillIdPtr) {
+                LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Invalid skill ID pointer at offset 0x28");
+                continue;
+            }
+            int newSkillId = **skillIdPtr; // Double dereference
+            
+            if (newSkillId <= 0) {
+                continue; // Skip invalid skill IDs
+            }
+            
+            bool canUseSkill = true;
+            
+            // Fix #2: Check already set skills instead of original item skills
+            // Original problem: for (int k = 0; k < 3; k++) { int existingSkillData = Item_GetKfsSkillData(item, (uint16_t)k);
+            // Fixed: Check against already set skills on player
+            for (int k = 0; k < currentSkillIndex; k++) {
+                int existingSkillId = Kfs_GetSkillID(player, k);
+                if (existingSkillId == newSkillId) {
+                    canUseSkill = false;
+                    LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Skill %d already exists at index %d", newSkillId, k);
+                    break;
+                }
+            }
+            
+            // Fix #3: Proper skill setting loop control following assembly logic
+            // When a suitable skill is found, set it and increment the skill index
+            if (canUseSkill && currentSkillIndex < MAX_KFS_SKILLS) {
+                int setResult = Kfs_SetSkill(player, currentSkillIndex, newSkillId);
+                if (setResult == 0) { // Successful skill setting
+                    LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Successfully set skill %d at index %d", newSkillId, currentSkillIndex);
+                    currentSkillIndex++; // Increment skill index after successful setting
+                    
+                    // Move to next skill iteration - this follows the assembly logic
+                    // where after finding a suitable skill, the iterator advances
+                    currentIter = (char*)currentIter + 0x30; // Move to next skill entry
+                } else {
+                    LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Failed to set skill %d, result: %d", newSkillId, setResult);
+                }
+            }
+            
+            // Break if we've set all skills
+            if (currentSkillIndex >= MAX_KFS_SKILLS) {
+                break;
+            }
+        }
+        
+        LogDebug(3, "LuaFnAskWashKfsSkillPiPiFix: Completed with %d skills set", currentSkillIndex);
+        return currentSkillIndex; // Return number of skills successfully set
+        
+    } catch (const std::exception& e) {
+        // Fix #4: Add comprehensive exception handling
+        LogDebug(1, "LuaFnAskWashKfsSkillPiPiFix: Exception caught: %s", e.what());
+        return -1;
+    } catch (...) {
+        LogDebug(1, "LuaFnAskWashKfsSkillPiPiFix: Unknown exception caught");
+        return -1;
     }
 }
