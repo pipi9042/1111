@@ -19,8 +19,19 @@ void Send_UICOMMON_Client(int a1, int a2);
 void call_SetMissionData(int a1, int a2, int a3);
 void Send_PacketTemporaryData_Client(int a1, void* src, int pos, int type);
 
+// KFS Skill washing function
+int LuaFnAskWashKfsSkillPiPiFix(int player, int item);
 
-//ÐÂÍæ¼ÒÊý¾Ý
+// Lua wrapper for KFS skill washing function
+int LuaFnAskWashKfsSkillPiPiFix_Wrapper(void* lua_state);
+
+// Helper functions for KFS skill management
+int Item_GetKfsSkillData(int item, unsigned short index);
+int Kfs_GetSkillID(int player, int index);
+int Kfs_SetSkill(int player, int skillIndex, int skillId);
+
+
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 struct playerData {
 	int m_guid[2999];   
 	int m_missiondata[2999][4096];
