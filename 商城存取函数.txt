@@ -1,0 +1,2782 @@
+__int64 __fastcall Packets::CGItemSynchHandler::Execute(
+        Packets::CGItemSynchHandler *this,
+        Packets::CGItemSynch *a2,
+        Player *a3)
+{
+  Obj_Human *v4; // r15
+  __int64 v5; // r13
+  const char *v6; // rbx
+  int v7; // eax
+  const char *v8; // rbx
+  int v9; // eax
+  int v10; // eax
+  unsigned __int8 v11; // r14
+  char v12; // dl
+  int v13; // eax
+  int v14; // eax
+  int v15; // eax
+  int v16; // r14d
+  char v17; // bl
+  int v18; // eax
+  int v19; // eax
+  int v20; // eax
+  int v21; // eax
+  __int64 v22; // rdi
+  __int64 v23; // rax
+  __int64 v24; // r13
+  int v25; // eax
+  const char *v26; // rbx
+  int v27; // eax
+  _BOOL4 v28; // ebx
+  unsigned int v29; // eax
+  const char *v30; // rbx
+  int v31; // eax
+  int v32; // eax
+  ItemContainer *MatContain; // rbx
+  int v34; // eax
+  int v35; // r13d
+  int v36; // r12d
+  int v37; // r14d
+  const char *v38; // rbx
+  int v39; // eax
+  unsigned int v41; // eax
+  const char *Text; // rsi
+  int v43; // r13d
+  int v44; // r12d
+  int v45; // r14d
+  const char *v46; // rbx
+  int v47; // eax
+  unsigned int v50; // eax
+  int v51; // eax
+  int v52; // ebx
+  int v53; // eax
+  int v54; // ebx
+  int v55; // eax
+  int v56; // r9d
+  char v57; // al
+  const char *v58; // rbx
+  int v59; // eax
+  __int16 v60; // kr00_2
+  int v61; // r14d
+  int v62; // ebx
+  int v63; // eax
+  int v64; // eax
+  int v65; // eax
+  int v66; // eax
+  __int64 v67; // rdi
+  __int64 PlayerShopByGUID; // rax
+  __int64 v69; // r14
+  int v70; // eax
+  const char *v71; // rbx
+  int v72; // eax
+  _BOOL4 v73; // ebx
+  unsigned int v74; // eax
+  const char *v75; // rbx
+  int v76; // eax
+  __int64 PlayerStallBoxByIndex; // rax
+  PlayerStallBox *v78; // r13
+  int v79; // eax
+  const char *v80; // rbx
+  int v81; // eax
+  int v82; // esi
+  int v83; // ebx
+  int v84; // eax
+  __int64 v85; // rax
+  __int64 v86; // rdi
+  int HigherLevelBySavvy; // eax
+  int v88; // ebx
+  int v89; // eax
+  int v90; // eax
+  Obj_Pet *v91; // rdi
+  unsigned __int64 PetGUID; // rax
+  const char *v93; // rbx
+  int v94; // eax
+  unsigned __int64 v95; // rbx
+  _DWORD *v96; // rax
+  int v97; // eax
+  const char *v98; // rbx
+  int v99; // eax
+  unsigned int v100; // ebx
+  int *v101; // rax
+  int v102; // eax
+  int v103; // eax
+  PET_LOG_PARAM *v104; // rax
+  unsigned __int8 v105; // al
+  int v106; // r13d
+  int v107; // eax
+  int v108; // r9d
+  char v109; // al
+  const char *v110; // rbx
+  int v111; // eax
+  int v112; // r14d
+  int v113; // ebx
+  int v114; // eax
+  int v115; // eax
+  int v116; // eax
+  int v117; // eax
+  __int64 v118; // rdi
+  PlayerShop *v119; // rax
+  PlayerShop *v120; // r13
+  __int64 v121; // rax
+  int v122; // eax
+  int v123; // eax
+  _BOOL4 v124; // ebx
+  unsigned int v125; // eax
+  int IsPartner; // eax
+  const char *v127; // rbx
+  int v128; // eax
+  unsigned __int8 SerialByIndex; // al
+  const char *v130; // rbx
+  int v131; // eax
+  int v132; // ebx
+  const char *v133; // r14
+  int v134; // eax
+  unsigned int ItemTableIndex; // eax
+  ItemContainer *ItemContain; // rbx
+  __int64 GUID; // rax
+  __int64 v138; // rcx
+  PET_LOG_PARAM **v139; // rdi
+  _EXCHANGE_ITEM_LIST *v140; // rdx
+  const char *v141; // rbx
+  int v142; // eax
+  int v143; // eax
+  const char *v144; // rbx
+  int v145; // eax
+  unsigned int v146; // ebx
+  int v147; // eax
+  __int64 v148; // rcx
+  _DWORD *v149; // rdi
+  int v150; // eax
+  int v151; // r9d
+  unsigned __int8 v152; // al
+  char v153; // dl
+  int v154; // ebx
+  int v155; // r14d
+  int v156; // eax
+  int v157; // eax
+  int v158; // eax
+  int v159; // eax
+  __int64 v160; // rdi
+  PlayerShop *v161; // rax
+  PlayerShop *v162; // r13
+  __int64 v163; // rax
+  int v164; // eax
+  _QWORD *v165; // r14
+  int v166; // eax
+  unsigned int v167; // eax
+  int v168; // eax
+  const char *v169; // rbx
+  int v170; // eax
+  unsigned __int8 v171; // al
+  const char *v172; // rbx
+  int v173; // eax
+  int v174; // r14d
+  const char *v175; // r12
+  int v176; // eax
+  const char *v177; // rbx
+  int v178; // eax
+  Item *v179; // rbx
+  int v180; // eax
+  const char *v181; // rbx
+  int v182; // eax
+  __int64 v183; // rax
+  __int64 v184; // rdi
+  int v185; // eax
+  int v186; // eax
+  int v187; // eax
+  __int64 v188; // rcx
+  _DWORD *v189; // rdi
+  _EXCHANGE_ITEM_LIST *v190; // rdx
+  const char *v191; // rbx
+  int v192; // eax
+  int v193; // eax
+  __int64 v194; // rax
+  const char *v195; // rbx
+  int v196; // eax
+  __int64 v197; // rbx
+  int *v198; // rax
+  int v199; // eax
+  int v200; // eax
+  PET_LOG_PARAM *v201; // rdi
+  unsigned __int8 v202; // al
+  int v203; // r14d
+  __int64 v204; // rbx
+  int v205; // eax
+  int v206; // r9d
+  char v207; // al
+  int v208; // ebx
+  int v209; // r14d
+  int v210; // eax
+  int v211; // eax
+  int v212; // eax
+  int v213; // eax
+  __int64 v214; // rdi
+  PlayerShop *v215; // rax
+  PlayerShop *v216; // r14
+  __int64 v217; // rax
+  int v218; // eax
+  _QWORD *v219; // r13
+  int v220; // eax
+  _BOOL4 v221; // ebx
+  unsigned int v222; // eax
+  int v223; // eax
+  const char *v224; // rbx
+  int v225; // eax
+  int v226; // ebx
+  const char *v227; // r14
+  int v228; // eax
+  __int64 v229; // rbx
+  Item *v230; // rax
+  unsigned int v232; // eax
+  unsigned int v235; // eax
+  Item *v236; // rbx
+  int v238; // r13d
+  int v239; // r12d
+  int v240; // r14d
+  const char *v241; // rbx
+  int v242; // eax
+  int v243; // ebx
+  int v244; // eax
+  int v245; // ebx
+  __int64 v246; // rcx
+  _DWORD *v247; // rdi
+  Item *v248; // rbx
+  __int64 v249; // rax
+  int v250; // r13d
+  int v251; // eax
+  int v252; // r9d
+  int v253; // ebx
+  int v254; // eax
+  int v255; // r9d
+  char v256; // al
+  int v257; // ebx
+  int v258; // eax
+  Item *v259; // rbx
+  __int64 v260; // rax
+  int v261; // r13d
+  int v262; // ebx
+  int v263; // eax
+  int v264; // r9d
+  char v265; // al
+  int v266; // ebx
+  int v267; // r14d
+  int v268; // eax
+  int v269; // eax
+  int v270; // eax
+  int v271; // eax
+  __int64 v272; // rdi
+  PlayerShop *v273; // rax
+  PlayerShop *v274; // r14
+  __int64 v275; // rax
+  int v276; // eax
+  int v277; // eax
+  _BOOL4 v278; // ebx
+  unsigned int v279; // eax
+  int v280; // eax
+  const char *v281; // rbx
+  int v282; // eax
+  signed int v283; // eax
+  signed int v284; // r13d
+  unsigned __int8 v285; // al
+  const char *v286; // rbx
+  int v287; // eax
+  Item *v288; // rax
+  int v289; // ebx
+  const char *v290; // r14
+  int v291; // eax
+  Item *v292; // rbx
+  unsigned int v293; // eax
+  ItemContainer *v294; // r13
+  Item *v296; // rax
+  const char *v297; // rbx
+  int v298; // eax
+  int v300; // r13d
+  int v301; // r12d
+  int v302; // r14d
+  const char *v303; // rbx
+  int v304; // eax
+  unsigned int v305; // eax
+  const char *v306; // rsi
+  int v307; // r13d
+  int v308; // r12d
+  int v309; // r14d
+  const char *v310; // rbx
+  int v311; // eax
+  const char *v314; // rsi
+  int v315; // r13d
+  int v316; // r12d
+  int v317; // r14d
+  const char *v318; // rbx
+  int v319; // eax
+  const char *v320; // rsi
+  int v321; // r13d
+  int v322; // r12d
+  int v323; // r14d
+  const char *v324; // rbx
+  int v325; // eax
+  char v326; // al
+  int v327; // ebx
+  int v328; // eax
+  Item *v329; // rbx
+  char v330; // r13
+  int v331; // ebx
+  int v332; // eax
+  int v333; // r9d
+  int v334; // ebx
+  int v335; // eax
+  int v336; // r9d
+  char v337; // al
+  int v338; // ebx
+  int v339; // eax
+  Item *v340; // rbx
+  __int64 v341; // rax
+  char v342; // r13
+  int v343; // ebx
+  int v344; // eax
+  int v345; // r9d
+  char v346; // al
+  int v347; // r14d
+  int v348; // ebx
+  int v349; // eax
+  int v350; // eax
+  int v351; // eax
+  int v352; // eax
+  __int64 v353; // rdi
+  __int64 v354; // rax
+  int v355; // eax
+  signed int v356; // eax
+  int v357; // eax
+  unsigned int v358; // ebx
+  const char *v359; // rbx
+  int v360; // eax
+  unsigned __int8 v361; // al
+  const char *v362; // r14
+  int v363; // eax
+  Item *v364; // r13
+  int v365; // r12d
+  int v366; // ebx
+  const char *v367; // r14
+  int v368; // eax
+  int v370; // r13d
+  int v371; // eax
+  Item *v372; // rax
+  int v373; // ebx
+  unsigned __int8 v374; // al
+  int v375; // r13d
+  int v376; // eax
+  Item *v377; // rax
+  int v378; // ebx
+  unsigned __int8 v379; // al
+  const char *v380; // rbx
+  int v381; // eax
+  __int64 v383; // [rsp+8h] [rbp-AE8h]
+  __int64 v384; // [rsp+10h] [rbp-AE0h]
+  int v385; // [rsp+18h] [rbp-AD8h]
+  __int64 v386; // [rsp+18h] [rbp-AD8h]
+  __int64 v387; // [rsp+18h] [rbp-AD8h]
+  int v388; // [rsp+20h] [rbp-AD0h]
+  __int64 v389; // [rsp+20h] [rbp-AD0h]
+  __int64 v390; // [rsp+20h] [rbp-AD0h]
+  int v391; // [rsp+2Ch] [rbp-AC4h]
+  int v392; // [rsp+2Ch] [rbp-AC4h]
+  int v393; // [rsp+2Ch] [rbp-AC4h]
+  char *v394; // [rsp+30h] [rbp-AC0h]
+  int v395; // [rsp+30h] [rbp-AC0h]
+  __int64 v396; // [rsp+30h] [rbp-AC0h]
+  int v397; // [rsp+30h] [rbp-AC0h]
+  __int64 v398; // [rsp+30h] [rbp-AC0h]
+  int v399; // [rsp+30h] [rbp-AC0h]
+  char v400; // [rsp+38h] [rbp-AB8h]
+  int v401; // [rsp+38h] [rbp-AB8h]
+  int v402; // [rsp+38h] [rbp-AB8h]
+  int v403; // [rsp+38h] [rbp-AB8h]
+  int v404; // [rsp+38h] [rbp-AB8h]
+  int v405; // [rsp+38h] [rbp-AB8h]
+  __int64 v406; // [rsp+38h] [rbp-AB8h]
+  int v407; // [rsp+40h] [rbp-AB0h]
+  __int64 v408; // [rsp+40h] [rbp-AB0h]
+  char v409; // [rsp+40h] [rbp-AB0h]
+  int v410; // [rsp+40h] [rbp-AB0h]
+  int v411; // [rsp+40h] [rbp-AB0h]
+  int v412; // [rsp+40h] [rbp-AB0h]
+  int v413; // [rsp+40h] [rbp-AB0h]
+  char v414; // [rsp+40h] [rbp-AB0h]
+  int v415; // [rsp+40h] [rbp-AB0h]
+  int v416; // [rsp+40h] [rbp-AB0h]
+  __int64 v417; // [rsp+48h] [rbp-AA8h]
+  int v418; // [rsp+48h] [rbp-AA8h]
+  char v419; // [rsp+48h] [rbp-AA8h]
+  char v420; // [rsp+48h] [rbp-AA8h]
+  unsigned int v421; // [rsp+48h] [rbp-AA8h]
+  int v422; // [rsp+48h] [rbp-AA8h]
+  int v423; // [rsp+50h] [rbp-AA0h]
+  int LayedNum; // [rsp+50h] [rbp-AA0h]
+  int v425; // [rsp+50h] [rbp-AA0h]
+  ItemContainer *v426; // [rsp+50h] [rbp-AA0h]
+  int v427; // [rsp+50h] [rbp-AA0h]
+  ItemContainer *v428; // [rsp+50h] [rbp-AA0h]
+  int v429; // [rsp+50h] [rbp-AA0h]
+  PlayerShop *v430; // [rsp+50h] [rbp-AA0h]
+  int v431; // [rsp+58h] [rbp-A98h]
+  char v432; // [rsp+58h] [rbp-A98h]
+  int v433; // [rsp+58h] [rbp-A98h]
+  char v434; // [rsp+58h] [rbp-A98h]
+  int v435; // [rsp+58h] [rbp-A98h]
+  int v436; // [rsp+58h] [rbp-A98h]
+  int v437; // [rsp+58h] [rbp-A98h]
+  ItemContainer *v438; // [rsp+58h] [rbp-A98h]
+  int v439; // [rsp+58h] [rbp-A98h]
+  PlayerStallBox *v440; // [rsp+58h] [rbp-A98h]
+  int v441; // [rsp+58h] [rbp-A98h]
+  ItemContainer *v442; // [rsp+58h] [rbp-A98h]
+  int v443; // [rsp+60h] [rbp-A90h]
+  int v444; // [rsp+60h] [rbp-A90h]
+  ItemContainer *PetContain; // [rsp+60h] [rbp-A90h]
+  int v446; // [rsp+60h] [rbp-A90h]
+  int v447; // [rsp+60h] [rbp-A90h]
+  int v448; // [rsp+60h] [rbp-A90h]
+  int v449; // [rsp+60h] [rbp-A90h]
+  ItemContainer *v450; // [rsp+60h] [rbp-A90h]
+  int v451; // [rsp+60h] [rbp-A90h]
+  int v452; // [rsp+60h] [rbp-A90h]
+  unsigned int v453; // [rsp+60h] [rbp-A90h]
+  int v454; // [rsp+60h] [rbp-A90h]
+  int v455; // [rsp+60h] [rbp-A90h]
+  unsigned int v456; // [rsp+60h] [rbp-A90h]
+  int v457; // [rsp+60h] [rbp-A90h]
+  PlayerStallBox *v458; // [rsp+60h] [rbp-A90h]
+  int v459; // [rsp+68h] [rbp-A88h]
+  PlayerStallBox *v460; // [rsp+68h] [rbp-A88h]
+  int v461; // [rsp+68h] [rbp-A88h]
+  int v462; // [rsp+68h] [rbp-A88h]
+  ItemContainer *v463; // [rsp+68h] [rbp-A88h]
+  unsigned int v464; // [rsp+68h] [rbp-A88h]
+  int v465; // [rsp+68h] [rbp-A88h]
+  int v466; // [rsp+68h] [rbp-A88h]
+  ItemContainer *v467; // [rsp+68h] [rbp-A88h]
+  int v468; // [rsp+68h] [rbp-A88h]
+  unsigned __int8 v469; // [rsp+68h] [rbp-A88h]
+  unsigned int v470; // [rsp+68h] [rbp-A88h]
+  Item *v471; // [rsp+68h] [rbp-A88h]
+  int v472; // [rsp+68h] [rbp-A88h]
+  int v473; // [rsp+68h] [rbp-A88h]
+  int v474; // [rsp+68h] [rbp-A88h]
+  unsigned int v475; // [rsp+68h] [rbp-A88h]
+  int v476; // [rsp+68h] [rbp-A88h]
+  int v477; // [rsp+68h] [rbp-A88h]
+  int v478; // [rsp+70h] [rbp-A80h]
+  unsigned int v479; // [rsp+70h] [rbp-A80h]
+  int v480; // [rsp+70h] [rbp-A80h]
+  int v481; // [rsp+70h] [rbp-A80h]
+  int v482; // [rsp+70h] [rbp-A80h]
+  int v483; // [rsp+70h] [rbp-A80h]
+  PlayerStallBox *v484; // [rsp+70h] [rbp-A80h]
+  int v485; // [rsp+70h] [rbp-A80h]
+  int v486; // [rsp+70h] [rbp-A80h]
+  int v487; // [rsp+70h] [rbp-A80h]
+  int v488; // [rsp+70h] [rbp-A80h]
+  Item *v489; // [rsp+70h] [rbp-A80h]
+  int v490; // [rsp+70h] [rbp-A80h]
+  unsigned __int8 v491; // [rsp+70h] [rbp-A80h]
+  unsigned int v492; // [rsp+70h] [rbp-A80h]
+  Item *v493; // [rsp+70h] [rbp-A80h]
+  int v494; // [rsp+70h] [rbp-A80h]
+  int v495; // [rsp+70h] [rbp-A80h]
+  int v496; // [rsp+78h] [rbp-A78h]
+  unsigned int v497; // [rsp+78h] [rbp-A78h]
+  int v498; // [rsp+78h] [rbp-A78h]
+  int v499; // [rsp+78h] [rbp-A78h]
+  Item *v500; // [rsp+78h] [rbp-A78h]
+  Item *v501; // [rsp+78h] [rbp-A78h]
+  Item *v502; // [rsp+78h] [rbp-A78h]
+  int v503; // [rsp+78h] [rbp-A78h]
+  int v504; // [rsp+78h] [rbp-A78h]
+  int v505; // [rsp+78h] [rbp-A78h]
+  _BOOL4 v506; // [rsp+78h] [rbp-A78h]
+  int v507; // [rsp+78h] [rbp-A78h]
+  __int16 v508; // [rsp+78h] [rbp-A78h]
+  __int16 v509; // [rsp+78h] [rbp-A78h]
+  unsigned __int8 v510; // [rsp+78h] [rbp-A78h]
+  int v511; // [rsp+80h] [rbp-A70h]
+  Item *BaseContain; // [rsp+80h] [rbp-A70h]
+  Item *v513; // [rsp+80h] [rbp-A70h]
+  Item *v514; // [rsp+80h] [rbp-A70h]
+  int v515; // [rsp+80h] [rbp-A70h]
+  int v516; // [rsp+80h] [rbp-A70h]
+  Item *v517; // [rsp+80h] [rbp-A70h]
+  Item *v518; // [rsp+80h] [rbp-A70h]
+  int v519; // [rsp+80h] [rbp-A70h]
+  unsigned __int8 v520; // [rsp+80h] [rbp-A70h]
+  unsigned __int16 v521; // [rsp+80h] [rbp-A70h]
+  __int16 v522; // [rsp+80h] [rbp-A70h]
+  __int16 v523; // [rsp+80h] [rbp-A70h]
+  int v524; // [rsp+88h] [rbp-A68h]
+  int v525; // [rsp+88h] [rbp-A68h]
+  int v526; // [rsp+88h] [rbp-A68h]
+  unsigned __int8 v527; // [rsp+8Ch] [rbp-A64h]
+  unsigned __int8 v528; // [rsp+8Ch] [rbp-A64h]
+  __int16 v529; // [rsp+8Ch] [rbp-A64h]
+  unsigned __int8 v530; // [rsp+8Ch] [rbp-A64h]
+  unsigned __int16 v531; // [rsp+8Ch] [rbp-A64h]
+  char ItemClass; // [rsp+8Ch] [rbp-A64h]
+  int v533; // [rsp+8Ch] [rbp-A64h]
+  int v534; // [rsp+8Ch] [rbp-A64h]
+  int v535; // [rsp+8Ch] [rbp-A64h]
+  unsigned int v536; // [rsp+90h] [rbp-A60h]
+  __int16 v537; // [rsp+90h] [rbp-A60h]
+  __int16 v538; // [rsp+90h] [rbp-A60h]
+  unsigned __int16 v539; // [rsp+90h] [rbp-A60h]
+  __int16 v540; // [rsp+90h] [rbp-A60h]
+  int v541; // [rsp+90h] [rbp-A60h]
+  int v542; // [rsp+90h] [rbp-A60h]
+  int v543; // [rsp+90h] [rbp-A60h]
+  Item *v544; // [rsp+90h] [rbp-A60h]
+  int v545; // [rsp+90h] [rbp-A60h]
+  char v546; // [rsp+90h] [rbp-A60h]
+  char v547; // [rsp+90h] [rbp-A60h]
+  unsigned __int8 v548; // [rsp+9Ah] [rbp-A56h]
+  int v549; // [rsp+9Ah] [rbp-A56h]
+  unsigned __int16 v550; // [rsp+9Ah] [rbp-A56h]
+  __int16 v551; // [rsp+9Ah] [rbp-A56h]
+  __int16 v552; // [rsp+9Ah] [rbp-A56h]
+  __int16 v553; // [rsp+9Ah] [rbp-A56h]
+  unsigned __int16 v554; // [rsp+9Ah] [rbp-A56h]
+  __int16 v555; // [rsp+9Ah] [rbp-A56h]
+  unsigned __int8 v556; // [rsp+9Ch] [rbp-A54h]
+  int v557; // [rsp+9Ch] [rbp-A54h]
+  __int16 v558; // [rsp+9Ch] [rbp-A54h]
+  int v559; // [rsp+9Ch] [rbp-A54h]
+  int v560; // [rsp+9Ch] [rbp-A54h]
+  int v561; // [rsp+9Ch] [rbp-A54h]
+  unsigned __int16 v562; // [rsp+9Ch] [rbp-A54h]
+  __int64 v563; // [rsp+A4h] [rbp-A4Ch] BYREF
+  __int64 v564; // [rsp+ACh] [rbp-A44h] BYREF
+  PET_LOG_PARAM *v565; // [rsp+B4h] [rbp-A3Ch]
+  int v566; // [rsp+BCh] [rbp-A34h]
+  _QWORD v567[2]; // [rsp+C0h] [rbp-A30h] BYREF
+  char v568; // [rsp+D0h] [rbp-A20h]
+  PET_LOG_PARAM *v569[2]; // [rsp+E0h] [rbp-A10h] BYREF
+  __int64 v570; // [rsp+F0h] [rbp-A00h]
+  PET_LOG_PARAM *v571[2]; // [rsp+100h] [rbp-9F0h] BYREF
+  __int64 v572; // [rsp+110h] [rbp-9E0h]
+  __int64 v573[2]; // [rsp+160h] [rbp-990h] BYREF
+  __int64 v574; // [rsp+170h] [rbp-980h]
+  char v575; // [rsp+17Ch] [rbp-974h]
+  __int16 v576; // [rsp+184h] [rbp-96Ch]
+  int v577; // [rsp+18Ch] [rbp-964h]
+  int v578; // [rsp+190h] [rbp-960h]
+  int v579; // [rsp+1C0h] [rbp-930h]
+  int v580; // [rsp+1C4h] [rbp-92Ch]
+  __int64 v581; // [rsp+1C8h] [rbp-928h]
+  _BYTE v582[28]; // [rsp+1D0h] [rbp-920h] BYREF
+  char v583; // [rsp+1ECh] [rbp-904h]
+  __int16 v584; // [rsp+1F4h] [rbp-8FCh]
+  int v585; // [rsp+1FCh] [rbp-8F4h]
+  int v586; // [rsp+200h] [rbp-8F0h]
+  int ItemBind; // [rsp+230h] [rbp-8C0h]
+  int ItemLock; // [rsp+234h] [rbp-8BCh]
+  int IsPWLock; // [rsp+238h] [rbp-8B8h]
+  _QWORD v590[2]; // [rsp+290h] [rbp-860h] BYREF
+  char v591; // [rsp+2A0h] [rbp-850h]
+  char v592; // [rsp+2A1h] [rbp-84Fh]
+  char v593; // [rsp+2A2h] [rbp-84Eh]
+  char v594; // [rsp+2A3h] [rbp-84Dh]
+  __int16 v595; // [rsp+2A4h] [rbp-84Ch]
+  int v596; // [rsp+2A8h] [rbp-848h]
+  __int64 v597; // [rsp+2ACh] [rbp-844h]
+  char v598; // [rsp+2B4h] [rbp-83Ch]
+  _QWORD v599[256]; // [rsp+2B5h] [rbp-83Bh] BYREF
+
+  if ( !a2 )
+    __assert__(
+      "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+      29,
+      "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+      "pGamePlayer");
+  v4 = (Obj_Human *)*((_QWORD *)a2 + 14);
+  if ( !v4 )
+    __assert__(
+      "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+      32,
+      "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+      "pHuman");
+  v5 = *((_QWORD *)v4 + 6);
+  if ( !v5 )
+    __assert__(
+      "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+      37,
+      "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+      "FALSE");
+  if ( *(_QWORD *)(v5 + 82016) != ThreadValueManager::GetCurrentThreadID(this) )
+    __assert__(
+      "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+      42,
+      "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+      "ThreadValueManager::GetCurrentThreadID() == pScene->m_ThreadID");
+  if ( !GamePlayer::IsCanLogic(a2) )
+  {
+    v6 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+    v7 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+    CacheLog(1, "ERROR CGItemSynchHandler::pGamePlayer->IsCanLogic( ): GUID=%X Name:%s.", v7, v6);
+    return 2;
+  }
+  if ( (unsigned int)Obj_Human::GetPilferLockFlag(v4) )
+  {
+    (*(void (__fastcall **)(Obj_Human *, __int64))(*(_QWORD *)v4 + 512LL))(v4, 4294967046LL);
+    v8 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+    v9 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+    CacheLog(1, "CGItemSynchHandler pHuman->GetPilferLockFlag() GUID=%X Name:%s.", v9, v8);
+    return 2;
+  }
+  v407 = *((_DWORD *)v4 + 56173) & 0x400;
+  if ( v407 )
+  {
+    v10 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+    CacheLog(1, "CGItemSynchHandler USER_BITLOCK_PLAYER_SHOP_OPT_TIME GUID = %X", v10);
+    return 2;
+  }
+  Obj_Human::SetUserBitLocked(v4, 10, 500);
+  v11 = *((_BYTE *)this + 16);
+  v556 = *((_BYTE *)this + 17);
+  v548 = *((_BYTE *)this + 18);
+  v527 = *((_BYTE *)this + 19);
+  v12 = *((_BYTE *)this + 21);
+  v13 = *((_DWORD *)this + 6);
+  LOBYTE(v563) = *((_BYTE *)this + 20);
+  BYTE1(v563) = v12;
+  HIDWORD(v563) = v13;
+  v14 = *((_DWORD *)this + 8);
+  LODWORD(v564) = *((_DWORD *)this + 7);
+  HIDWORD(v564) = v14;
+  v400 = *((_BYTE *)this + 36);
+  v394 = (char *)this + 37;
+  Packet::Packet((Packet *)v567);
+  v567[0] = off_AFF118;
+  v568 = 0;
+  Packet::Packet((Packet *)v590);
+  v590[0] = off_AB8300;
+  v596 = 0;
+  v595 = 0;
+  v597 = 0;
+  v591 = 0;
+  v592 = 0;
+  v593 = 0;
+  v594 = 0;
+  v598 = 0;
+  memset(v599, 0, sizeof(v599));
+  v536 = v527;
+  v15 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+  CacheLog(
+    1,
+    "CGItemSynchHandler::Before GUID=%X Opt=%d FromType=%d ToType=%d ToIndex=%d Item:(%d-%d-%d) Pet:(%d-%d)",
+    v15,
+    v11,
+    v556,
+    v548,
+    v527,
+    (unsigned __int8)v563,
+    BYTE1(v563),
+    HIDWORD(v563),
+    v564,
+    HIDWORD(v564));
+  if ( !v11 )
+  {
+    if ( v556 == 2 )
+    {
+      if ( v548 != 5 )
+        goto LABEL_19;
+      *(_DWORD *)&v582[8] = -1;
+      *(_DWORD *)v582 = -1;
+      *(_WORD *)&v582[4] = -1;
+      *(_WORD *)&v582[12] = 0;
+      if ( v400 != 16 )
+        __assert__(
+          "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+          347,
+          "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+          "ExtraInfoL == ExtraData.GetSize()");
+      *(_QWORD *)&v582[8] = *(_QWORD *)((char *)this + 45);
+      qmemcpy(v582, v394, 8u);
+      v573[0] = *(_QWORD *)v582;
+      v557 = *(_DWORD *)&v582[8];
+      LODWORD(v573[1]) = *(_DWORD *)&v582[8];
+      v60 = *(_WORD *)&v582[12];
+      v550 = *(_WORD *)&v582[4];
+      v61 = *(__int16 *)&v582[4];
+      v538 = *(_WORD *)&v582[2];
+      v62 = *(__int16 *)&v582[2];
+      v529 = *(_WORD *)v582;
+      v499 = *(__int16 *)v582;
+      v480 = v582[13];
+      v461 = v582[12];
+      v63 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(
+        1,
+        "Recieve:CGItemSynchHandler::AUTO POS_PET->POS_PLAYERSHOPPET ObjGUID=%X, nStallIndex=%d nShopSerial=%d shopid=(%d)(%d)(%d)(%d)",
+        v63,
+        v461,
+        v480,
+        v499,
+        v62,
+        v61,
+        v557);
+      if ( (v550 & (unsigned __int16)(v529 & v538)) == -1 && v557 == -1 )
+      {
+        v65 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(1, "CGItemSynchHandler::AUTO POS_PET->POS_PLAYERSHOPPET ObjGUID=%X, invalid shopid", v65);
+        goto LABEL_375;
+      }
+      if ( !v564 )
+      {
+        v66 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(1, "CGItemSynchHandler::AUTO POS_PET->POS_PLAYERSHOPPET ObjGUID=%X, PetGuid.IsNull()", v66);
+        goto LABEL_375;
+      }
+      if ( (unsigned __int8)v60 > 9u )
+      {
+        v64 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(1, "CGItemSynchHandler::AUTO POS_PET->POS_PLAYERSHOPPET ObjGUID=%X, invalid nStallIndex", v64);
+        goto LABEL_375;
+      }
+      v67 = *(_QWORD *)(v5 + 120);
+      LOWORD(v573[0]) = v529;
+      WORD1(v573[0]) = v538;
+      WORD2(v573[0]) = v550;
+      LODWORD(v573[1]) = v557;
+      PlayerShopByGUID = PlayerShopManager::GetPlayerShopByGUID(v67, v573[0], v557);
+      v69 = PlayerShopByGUID;
+      if ( !PlayerShopByGUID )
+      {
+        v70 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(1, "CGItemSynchHandler::AUTO POS_PET->POS_PLAYERSHOPPET ObjGUID=%X, No shop!!", v70);
+        goto LABEL_375;
+      }
+      if ( *(_BYTE *)(*(_QWORD *)(PlayerShopByGUID + 16) + 1LL) != 2 )
+      {
+        v568 = 1;
+        (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+        v71 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+        v72 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(1, "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_ILLEGAL:TYPE ERROR PET->SHOP", v72, v71);
+        goto LABEL_375;
+      }
+      v73 = *(_DWORD *)(*(_QWORD *)(PlayerShopByGUID + 16) + 160LL) == (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      v74 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      if ( !(v73 | (unsigned int)PlayerShop::IsPartner((PlayerShop *)v69, v74)) )
+      {
+        v75 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+        v76 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(1, "CGItemSynchHandler::ObjGUID=%X Name=%s Has no right to add pet", v76, v75);
+        goto LABEL_375;
+      }
+      if ( HIBYTE(v60) == *(_BYTE *)(v69 + 164592) )
+      {
+        PlayerStallBoxByIndex = PlayerShop::GetPlayerStallBoxByIndex((PlayerShop *)v69, (unsigned __int8)v60);
+        v78 = (PlayerStallBox *)PlayerStallBoxByIndex;
+        if ( !PlayerStallBoxByIndex )
+        {
+          v79 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::AUTO POS_PET->POS_PLAYERSHOPPET ObjGUID=%X, No StallBox!!", v79);
+          goto LABEL_375;
+        }
+        if ( *(_BYTE *)(*(_QWORD *)PlayerStallBoxByIndex + 2LL) > 0x13u )
+        {
+          v568 = 36;
+          (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+          v80 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+          v81 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::ObjGUID=%X Name=%s ERR_SHOP_MAX_PET_NUM", v81, v80);
+          goto LABEL_375;
+        }
+        PetContain = (ItemContainer *)Obj_Human::GetPetContain(v4);
+        v82 = (*(__int64 (__fastcall **)(ItemContainer *, __int64 *))(*(_QWORD *)PetContain + 160LL))(PetContain, &v564);
+        v500 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*(_QWORD *)PetContain + 200LL))(
+                         PetContain,
+                         (unsigned int)v82);
+        if ( !*((_QWORD *)v500 + 2) )
+          __assert__("/home/rtm_wuling/src_mi/Server/Server/Item/Item.inl", 907, "int Item::GetLevel() const", "m_pPet");
+        v83 = *(_DWORD *)(*((_QWORD *)v500 + 2) + 84LL);
+        v84 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 752LL))(v4);
+        v481 = v84;
+        if ( !*((_QWORD *)v500 + 2) )
+          __assert__("/home/rtm_wuling/src_mi/Server/Server/Item/Item.inl", 996, "int Item::GetSavvy() const", "m_pPet");
+        v85 = *((_QWORD *)v500 + 2);
+        v86 = 9;
+        if ( *(int *)(v85 + 333) <= 9 )
+          v86 = *(unsigned int *)(v85 + 333);
+        HigherLevelBySavvy = PetRuler::GetHigherLevelBySavvy((PetRuler *)v86, v82);
+        if ( v481 + HigherLevelBySavvy + 5 < v83 )
+        {
+          (*(void (__fastcall **)(Obj_Human *, __int64))(*(_QWORD *)v4 + 512LL))(v4, 4294967053LL);
+          v89 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(
+            1,
+            "ERROR: CGItemSynchHandler::ObjGUID=%X , nPetLevel=%d nHumanLevel=%d nPetLevel>nHumanLevel+5",
+            v89,
+            v83,
+            v481);
+          goto LABEL_375;
+        }
+        if ( !*((_QWORD *)v500 + 2) )
+          __assert__(
+            "/home/rtm_wuling/src_mi/Server/Server/Item/Item.inl",
+            912,
+            "int Item::GetTakeLevel() const",
+            "m_pPet");
+        v88 = *(_DWORD *)(*((_QWORD *)v500 + 2) + 92LL);
+        if ( v481 < v88 )
+        {
+          (*(void (__fastcall **)(Obj_Human *, __int64))(*(_QWORD *)v4 + 512LL))(v4, 4294967053LL);
+          v90 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(
+            1,
+            "ERROR: CGItemSynchHandler::ObjGUID=%X , nPetPickLevel=%d nHumanLevel=%d nPetPickLevel>nHumanLevel",
+            v90,
+            v88,
+            v481);
+          goto LABEL_375;
+        }
+        if ( (unsigned int)Item::IsPWLock(v500) )
+        {
+          v93 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+          v94 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::ObjGUID=%X Name=%s Item is pw locked", v94, v93);
+          goto LABEL_375;
+        }
+        v91 = (Obj_Pet *)*((_QWORD *)v4 + 28115);
+        if ( v91 )
+        {
+          PetGUID = Obj_Pet::GetPetGUID(v91);
+          v407 = PetGUID;
+          v95 = HIDWORD(PetGUID);
+        }
+        else
+        {
+          LODWORD(v95) = 0;
+        }
+        if ( !*((_QWORD *)v500 + 2) )
+          __assert__(
+            "/home/rtm_wuling/src_mi/Server/Server/Item/Item.inl",
+            880,
+            "PET_GUID_t Item::GetPetGUID()",
+            "m_pPet");
+        v96 = (_DWORD *)*((_QWORD *)v500 + 2);
+        if ( v96[1] == (_DWORD)v95 && *v96 == v407 )
+          Obj_Human::ReCallPet(v4);
+        if ( v82 < 0 )
+        {
+          v568 = 1;
+          (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+          v98 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+          v99 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_ILLEGAL:PetGuid ", v99, v98);
+          goto LABEL_375;
+        }
+        v97 = ItemOperator::MoveItem(
+                (ItemOperator *)&g_ItemOperator,
+                PetContain,
+                v82,
+                (PlayerStallBox *)((char *)v78 + 8216),
+                -1);
+        v100 = v97;
+        if ( v97 < 0 )
+        {
+          if ( v97 != -5 )
+            __assert__(
+              "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+              563,
+              "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+              "0");
+          v568 = 8;
+          (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+          v110 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+          v111 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NOT_ENOUGH_ROOM_IN_STALL", v111, v110);
+          goto LABEL_375;
+        }
+        v501 = (Item *)(*(__int64 (__fastcall **)(__int64, _QWORD))(*((_QWORD *)v78 + 1027) + 200LL))(
+                         (__int64)v78 + 8216,
+                         (unsigned int)v97);
+        if ( !Item::IsEmpty(v501) )
+        {
+          if ( !*((_QWORD *)v501 + 2) )
+            __assert__(
+              "/home/rtm_wuling/src_mi/Server/Server/Item/Item.inl",
+              880,
+              "PET_GUID_t Item::GetPetGUID()",
+              "m_pPet");
+          v101 = (int *)*((_QWORD *)v501 + 2);
+          v446 = v101[1];
+          v482 = *v101;
+          v102 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(
+            14,
+            "<PET>\t[MOVE] ObjGUID:%X, %s->%s, PetGuid:high(%d)low(%d), SourceIndex:%d, DestIndex:%d",
+            v102,
+            "Pet",
+            "Player Shop",
+            v482,
+            v446,
+            v82,
+            v100);
+          ++*(_BYTE *)(*(_QWORD *)v78 + 2LL);
+          std::make_unique<PET_LOG_PARAM>(v571);
+          if ( !v571[0] )
+            __assert__(
+              "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+              519,
+              "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+              "pPetLogParam");
+          v103 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          *(_DWORD *)v571[0] = v103;
+          v104 = v571[0];
+          *((_DWORD *)v571[0] + 2) = 51;
+          *((_WORD *)v104 + 6) = *(_WORD *)(*((_QWORD *)v4 + 6) + 30LL);
+          *((_DWORD *)v104 + 4) = *((_DWORD *)v4 + 9);
+          *((_DWORD *)v104 + 5) = *((_DWORD *)v4 + 10);
+          Item::SaveValueTo(v501, (PET_LOG_PARAM *)((char *)v104 + 24));
+          SavePetLog(v571[0]);
+          v105 = PlayerStallBox::IncSerialByIndex(v78, v100);
+          v106 = v105;
+          if ( !*((_QWORD *)v501 + 2) )
+            __assert__(
+              "/home/rtm_wuling/src_mi/Server/Server/Item/Item.inl",
+              897,
+              "const CHAR* Item::GetName() const",
+              "m_pPet");
+          v502 = (Item *)(*((_QWORD *)v501 + 2) + 20LL);
+          v107 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+          RecordOpt::Excute(4, *(_DWORD *)(v69 + 16) + 501368, v107, (_DWORD)v502, 1, v108);
+          v591 = 0;
+          v592 = 2;
+          v593 = 5;
+          v594 = v100;
+          v597 = v564;
+          v109 = *(_BYTE *)(v69 + 164592) + 1;
+          *(_BYTE *)(v69 + 164592) = v109;
+          v598 = 24;
+          LOWORD(v599[0]) = v529;
+          WORD1(v599[0]) = v538;
+          WORD2(v599[0]) = v550;
+          LODWORD(v599[1]) = v557;
+          BYTE4(v599[1]) = v60;
+          LODWORD(v599[2]) = v106;
+          BYTE4(v599[2]) = v109;
+          (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v590);
+          std::unique_ptr<PET_LOG_PARAM>::~unique_ptr(v571);
+        }
+        goto LABEL_19;
+      }
+      goto LABEL_314;
+    }
+    if ( v556 > 2u )
+    {
+      if ( v556 == 4 )
+      {
+        if ( v548 )
+          goto LABEL_19;
+        LODWORD(v569[1]) = -1;
+        LODWORD(v569[0]) = -1;
+        WORD2(v569[0]) = -1;
+        BYTE4(v569[1]) = 0;
+        LODWORD(v570) = 0;
+        BYTE4(v570) = 0;
+        if ( v400 != 24 )
+          __assert__(
+            "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+            586,
+            "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+            "ExtraInfoL == ExtraData.GetSize()");
+        v570 = *(_QWORD *)((char *)this + 53);
+        qmemcpy(v569, v394, sizeof(v569));
+        v565 = v569[0];
+        v112 = (int)v569[1];
+        v566 = (int)v569[1];
+        v530 = BYTE4(v569[1]);
+        v516 = v570;
+        v432 = BYTE4(v570);
+        v447 = BYTE4(v570);
+        v539 = WORD2(v569[0]);
+        v503 = SWORD2(v569[0]);
+        v551 = WORD1(v569[0]);
+        v483 = SWORD1(v569[0]);
+        v558 = (__int16)v569[0];
+        v113 = SLOWORD(v569[0]);
+        v462 = BYTE4(v569[1]);
+        v114 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(
+          1,
+          "Recieve:CGItemSynchHandler::AUTO POS_PLAYERSHOP->POS_BAG ObjGUID=%X, nStallIndex=%d uSerial=%d nShopSerial=%d "
+          "shopid=(%d)(%d)(%d)(%d)",
+          v114,
+          v462,
+          v516,
+          v447,
+          v113,
+          v483,
+          v503,
+          v112);
+        if ( (v539 & (unsigned __int16)(v551 & v558)) == -1 && v112 == -1 )
+        {
+          v116 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::AUTO POS_PLAYERSHOP->POS_BAG ObjGUID=%X, invalid shopid", v116);
+          goto LABEL_375;
+        }
+        if ( !HIDWORD(v563) && !(_WORD)v563 )
+        {
+          v117 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::AUTO POS_PLAYERSHOP->POS_BAG ObjGUID=%X, ItemGuid.isNull()", v117);
+          goto LABEL_375;
+        }
+        if ( v530 > 9u )
+        {
+          v115 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::AUTO POS_PLAYERSHOP->POS_BAG ObjGUID=%X, invalid nStallIndex", v115);
+          goto LABEL_375;
+        }
+        v118 = *(_QWORD *)(v5 + 120);
+        LOWORD(v565) = v558;
+        WORD1(v565) = v551;
+        WORD2(v565) = v539;
+        v566 = v112;
+        v119 = (PlayerShop *)PlayerShopManager::GetPlayerShopByGUID(v118, (__int64)v565, v112);
+        v120 = v119;
+        if ( !v119 )
+        {
+          v122 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::AUTO POS_PLAYERSHOP->POS_BAG ObjGUID=%X, No shop!!", v122);
+          goto LABEL_375;
+        }
+        v121 = PlayerShop::GetPlayerStallBoxByIndex(v119, v530);
+        v484 = (PlayerStallBox *)v121;
+        if ( !v121 )
+        {
+          v123 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::AUTO POS_PLAYERSHOP->POS_BAG ObjGUID=%X, No StallBox!!", v123);
+          goto LABEL_375;
+        }
+        v124 = *(_DWORD *)(*((_QWORD *)v120 + 2) + 160LL) == (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        v125 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        IsPartner = PlayerShop::IsPartner(v120, v125);
+        if ( !(v124 | IsPartner) )
+          goto LABEL_154;
+        if ( v432 == *((_BYTE *)v120 + 164592) )
+        {
+          v463 = (PlayerStallBox *)((char *)v484 + 8);
+          v504 = (*(__int64 (__fastcall **)(__int64, __int64 *))(*((_QWORD *)v484 + 1) + 152LL))(
+                   (__int64)v484 + 8,
+                   &v563);
+          if ( v504 < 0 )
+          {
+            v568 = 10;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            v130 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v131 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              1,
+              "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NEED_NEW_COPY: IndexInStall = %d",
+              v131,
+              v130,
+              v504);
+            goto LABEL_375;
+          }
+          SerialByIndex = PlayerStallBox::GetSerialByIndex(v484, v504);
+          if ( SerialByIndex != v516 )
+          {
+            v568 = 10;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            v132 = (unsigned __int8)PlayerStallBox::GetSerialByIndex(v484, v504);
+            v133 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v134 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              1,
+              "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NEED_NEW_COPY: Serial = %d, BoxSerial = %d",
+              v134,
+              v133,
+              v516,
+              v132);
+            goto LABEL_375;
+          }
+          v517 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*((_QWORD *)v484 + 1) + 200LL))(
+                           v463,
+                           (unsigned int)v504);
+          ItemTableIndex = Item::GetItemTableIndex(v517);
+          ItemContain = (ItemContainer *)HumanItemLogic::GetItemContain(v4, (Obj_Human *)ItemTableIndex);
+          ITEM_LOG_PARAM::ITEM_LOG_PARAM((ITEM_LOG_PARAM *)v573);
+          HIDWORD(v574) = 214;
+          GUID = Item::GetGUID(v517);
+          HIDWORD(v573[0]) = HIDWORD(GUID);
+          LOWORD(v573[0]) = GUID;
+          LODWORD(v573[1]) = Item::GetItemTableIndex(v517);
+          v138 = 22;
+          v139 = v571;
+          while ( v138 )
+          {
+            *(_DWORD *)v139 = 0;
+            v139 = (PET_LOG_PARAM **)((char *)v139 + 4);
+            --v138;
+          }
+          _EXCHANGE_ITEM_LIST::AddItem((_EXCHANGE_ITEM_LIST *)v571, v517);
+          if ( !(unsigned int)HumanItemLogic::CanReceiveExchangeItemList(v4, (Obj_Human *)v571, v140) )
+          {
+            v568 = 11;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            v141 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v142 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(1, "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NOT_ENOUGH_ROOM", v142, v141);
+            goto LABEL_375;
+          }
+          v143 = ItemOperator::MoveItem((ItemOperator *)&g_ItemOperator, v463, v504, ItemContain, -1);
+          v464 = v143;
+          if ( v143 < 0 )
+          {
+            if ( v143 != -5 )
+              __assert__(
+                "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+                726,
+                "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+                "0");
+            v568 = 11;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            v144 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v145 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(1, "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NOT_ENOUGH_ROOM_IN_STALL", v145, v144);
+            goto LABEL_375;
+          }
+          v518 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*(_QWORD *)ItemContain + 200LL))(
+                           ItemContain,
+                           (unsigned int)v143);
+          v146 = (*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*(_QWORD *)ItemContain + 24LL))(ItemContain, v464);
+          LayedNum = Item::GetLayedNum(v518);
+          v418 = Item::GetItemTableIndex(v518);
+          v408 = Item::GetGUID(v518) >> 32;
+          v448 = (unsigned __int8)((unsigned __int16)Item::GetGUID(v518) >> 8);
+          v433 = (unsigned __int8)Item::GetGUID(v518);
+          v147 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(
+            14,
+            "<ITEM> [MOVE] ObjGUID:%X, %s->%s, ItemGuid:world(%d)server(%d)serial(%d)itemIndex(%d)num(%d), SourceIndex:%d, DestIndex:%d",
+            v147,
+            "Player Shop",
+            "Package",
+            v433,
+            v448,
+            v408,
+            v418,
+            LayedNum,
+            v504,
+            v464);
+          Obj_Human::OnItemEnterBag(v4, v518, v146);
+          v148 = 45;
+          v149 = v582;
+          while ( v148 )
+          {
+            *v149++ = 0;
+            --v148;
+          }
+          Item::SaveValueTo(v518, (__m128i *)v582);
+          if ( !(unsigned int)ItemCreateRuler::CheckItemValidity((ItemCreateRuler *)v582, (_ITEM *)v582) )
+          {
+            v568 = 38;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+          }
+          v575 = v146;
+          HIDWORD(v573[1]) = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          v577 = *((_DWORD *)v4 + 9);
+          v578 = *((_DWORD *)v4 + 10);
+          v576 = *(_WORD *)(*((_QWORD *)v4 + 6) + 30LL);
+          SaveItemLog((ITEM_LOG_PARAM *)v573);
+          v465 = Item::GetLayedNum(v518);
+          v519 = Item::GetItemTableIndex(v518);
+          v150 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+          RecordOpt::Excute(3, *((_DWORD *)v120 + 4) + 501368, v150, v519, v465, v151);
+          v152 = PlayerStallBox::IncSerialByIndex(v484, v504);
+          v591 = 0;
+          v592 = 4;
+          v593 = 0;
+          v594 = v146;
+          v596 = HIDWORD(v563);
+          v595 = v563;
+          v153 = *((_BYTE *)v120 + 164592) + 1;
+          *((_BYTE *)v120 + 164592) = v153;
+          v598 = 24;
+          LOWORD(v599[0]) = v558;
+          WORD1(v599[0]) = v551;
+          WORD2(v599[0]) = v539;
+          LODWORD(v599[1]) = v112;
+          BYTE4(v599[1]) = v530;
+          BYTE5(v599[1]) = 1;
+          LODWORD(v599[2]) = v152;
+          BYTE4(v599[2]) = v153;
+          (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v590);
+          goto LABEL_19;
+        }
+      }
+      else
+      {
+        if ( v556 != 5 || v548 != 2 )
+          goto LABEL_19;
+        LODWORD(v573[1]) = -1;
+        LODWORD(v573[0]) = -1;
+        WORD2(v573[0]) = -1;
+        BYTE4(v573[1]) = 0;
+        LODWORD(v574) = 0;
+        BYTE4(v574) = 0;
+        if ( v400 != 24 )
+          __assert__(
+            "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+            799,
+            "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+            "ExtraInfoL == ExtraData.GetSize()");
+        v574 = *(_QWORD *)((char *)this + 53);
+        qmemcpy(v573, v394, sizeof(v573));
+        v571[0] = (PET_LOG_PARAM *)v573[0];
+        v559 = v573[1];
+        LODWORD(v571[1]) = v573[1];
+        v520 = BYTE4(v573[1]);
+        v154 = v574;
+        v434 = BYTE4(v574);
+        v531 = WORD2(v573[0]);
+        v505 = SWORD2(v573[0]);
+        v552 = WORD1(v573[0]);
+        v485 = SWORD1(v573[0]);
+        v540 = v573[0];
+        v155 = SLOWORD(v573[0]);
+        v466 = BYTE4(v574);
+        v449 = BYTE4(v573[1]);
+        v156 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(
+          1,
+          "Recieve:CGItemSynchHandler::AUTO POS_PLAYERSHOPPET->POS_PET ObjGUID=%X, nStallIndex=%d uSerial=%d nShopSerial="
+          "%d shopid=(%d)(%d)(%d)(%d)",
+          v156,
+          v449,
+          v154,
+          v466,
+          v155,
+          v485,
+          v505,
+          v559);
+        if ( (v531 & (unsigned __int16)(v540 & v552)) == -1 && v559 == -1 )
+        {
+          v158 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::AUTO POS_PLAYERSHOPPET->POS_PET ObjGUID=%X, invalid shopid", v158);
+          goto LABEL_375;
+        }
+        if ( !v564 )
+        {
+          v159 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::AUTO POS_PLAYERSHOPPET->POS_PET ObjGUID=%X, PetGuid.IsNull()", v159);
+          goto LABEL_375;
+        }
+        if ( v520 > 9u )
+        {
+          v157 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::AUTO POS_PLAYERSHOPPET->POS_PET ObjGUID=%X, invalid nStallIndex", v157);
+          goto LABEL_375;
+        }
+        v160 = *(_QWORD *)(v5 + 120);
+        LOWORD(v571[0]) = v540;
+        WORD1(v571[0]) = v552;
+        WORD2(v571[0]) = v531;
+        LODWORD(v571[1]) = v559;
+        v161 = (PlayerShop *)PlayerShopManager::GetPlayerShopByGUID(v160, (__int64)v571[0], v559);
+        v162 = v161;
+        if ( !v161 )
+        {
+          v164 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::AUTO POS_PLAYERSHOPPET->POS_PET ObjGUID=%X, No shop!!", v164);
+          goto LABEL_375;
+        }
+        v163 = PlayerShop::GetPlayerStallBoxByIndex(v161, v520);
+        v165 = (_QWORD *)v163;
+        if ( !v163 )
+        {
+          v166 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::AUTO POS_PLAYERSHOPPET->POS_PET ObjGUID=%X, No StallBox!!", v166);
+          goto LABEL_375;
+        }
+        v506 = *(_DWORD *)(*((_QWORD *)v162 + 2) + 160LL) == (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        v167 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        v168 = PlayerShop::IsPartner(v162, v167);
+        if ( !(v168 | v506) )
+        {
+          v169 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+          v170 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(1, "CGItemSynchHandler::ObjGUID=%X Name=%s Has no right to remove pet", v170, v169);
+          goto LABEL_375;
+        }
+        if ( v434 == *((_BYTE *)v162 + 164592) )
+        {
+          v450 = (ItemContainer *)(v165 + 1027);
+          v507 = (*(__int64 (__fastcall **)(_QWORD *, __int64 *))(v165[1027] + 160LL))(v165 + 1027, &v564);
+          if ( v507 < 0 )
+          {
+            v568 = 10;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            v172 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v173 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              1,
+              "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NEED_NEW_COPY: IndexInStall = %d",
+              v173,
+              v172,
+              v507);
+            goto LABEL_375;
+          }
+          v171 = PlayerStallBox::GetSerialByIndex((PlayerStallBox *)v165, v507);
+          if ( v171 != v154 )
+          {
+            v568 = 10;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            v174 = (unsigned __int8)PlayerStallBox::GetSerialByIndex((PlayerStallBox *)v165, v507);
+            v175 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v176 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              1,
+              "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NEED_NEW_COPY: Serial = %d, BoxSerial = %d",
+              v176,
+              v175,
+              v154,
+              v174);
+            goto LABEL_375;
+          }
+          if ( !*(_BYTE *)(*v165 + 2LL) )
+          {
+            v177 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v178 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(1, "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, Already Empty", v178, v177);
+            goto LABEL_375;
+          }
+          v467 = (ItemContainer *)Obj_Human::GetPetContain(v4);
+          v179 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(v165[1027] + 200LL))(
+                           v450,
+                           (unsigned int)v507);
+          if ( !(unsigned int)Obj_Human::CanAddMorePet(v4, 1) )
+          {
+            (*(void (__fastcall **)(Obj_Human *, __int64))(*(_QWORD *)v4 + 512LL))(v4, 4294967196LL);
+            v181 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v182 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              1,
+              "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, pHuman->CanAddMorePet() == FALSE",
+              v182,
+              v181);
+            goto LABEL_375;
+          }
+          if ( !*((_QWORD *)v179 + 2) )
+            __assert__(
+              "/home/rtm_wuling/src_mi/Server/Server/Item/Item.inl",
+              907,
+              "int Item::GetLevel() const",
+              "m_pPet");
+          v435 = *(_DWORD *)(*((_QWORD *)v179 + 2) + 84LL);
+          v180 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 752LL))(v4);
+          v486 = v180;
+          if ( !*((_QWORD *)v179 + 2) )
+            __assert__(
+              "/home/rtm_wuling/src_mi/Server/Server/Item/Item.inl",
+              996,
+              "int Item::GetSavvy() const",
+              "m_pPet");
+          v183 = *((_QWORD *)v179 + 2);
+          v184 = 9;
+          if ( *(int *)(v183 + 333) <= 9 )
+            v184 = *(unsigned int *)(v183 + 333);
+          v185 = PetRuler::GetHigherLevelBySavvy((PetRuler *)v184, 1);
+          if ( v486 + v185 + 5 < v435 )
+          {
+            (*(void (__fastcall **)(Obj_Human *, __int64))(*(_QWORD *)v4 + 512LL))(v4, 4294967053LL);
+            v186 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              1,
+              "ERROR: CGItemSynchHandler::ObjGUID=%X , nPetLevel=%d nHumanLevel=%d nPetLevel>nHumanLevel+5",
+              v186,
+              v435,
+              v486);
+            goto LABEL_375;
+          }
+          if ( !*((_QWORD *)v179 + 2) )
+            __assert__(
+              "/home/rtm_wuling/src_mi/Server/Server/Item/Item.inl",
+              912,
+              "int Item::GetTakeLevel() const",
+              "m_pPet");
+          v436 = *(_DWORD *)(*((_QWORD *)v179 + 2) + 92LL);
+          if ( v486 < v436 )
+          {
+            (*(void (__fastcall **)(Obj_Human *, __int64))(*(_QWORD *)v4 + 512LL))(v4, 4294967053LL);
+            v187 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              1,
+              "ERROR: CGItemSynchHandler::ObjGUID=%X , nPetPickLevel=%d nHumanLevel=%d nPetPickLevel>nHumanLevel",
+              v187,
+              v436,
+              v486);
+            goto LABEL_375;
+          }
+          std::make_unique<PET_LOG_PARAM>(v569);
+          if ( !v569[0] )
+            __assert__(
+              "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+              936,
+              "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+              "pPetLogParam");
+          Item::SaveValueTo(v179, (PET_LOG_PARAM *)((char *)v569[0] + 24));
+          v188 = 22;
+          v189 = v582;
+          while ( v188 )
+          {
+            *v189++ = 0;
+            --v188;
+          }
+          _EXCHANGE_ITEM_LIST::AddItem((_EXCHANGE_ITEM_LIST *)v582, v179);
+          if ( (unsigned int)HumanItemLogic::CanReceiveExchangeItemList(v4, (Obj_Human *)v582, v190) )
+          {
+            v193 = ItemOperator::MoveItem((ItemOperator *)&g_ItemOperator, v450, v507, v467, -1);
+            v487 = v193;
+            if ( v193 >= 0 )
+            {
+              v194 = (*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*(_QWORD *)v467 + 200LL))(
+                       v467,
+                       (unsigned int)v193);
+              v197 = v194;
+              if ( !*(_QWORD *)(v194 + 16) )
+                __assert__(
+                  "/home/rtm_wuling/src_mi/Server/Server/Item/Item.inl",
+                  880,
+                  "PET_GUID_t Item::GetPetGUID()",
+                  "m_pPet");
+              v198 = *(int **)(v194 + 16);
+              v451 = v198[1];
+              v468 = *v198;
+              v199 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+              CacheLog(
+                14,
+                "<PET>\t[MOVE] ObjGUID:%X, %s->%s, PetGuid:high(%d)low(%d), SourceIndex:%d, DestIndex:%d",
+                v199,
+                "Pet Container",
+                "Player Shop",
+                v468,
+                v451,
+                v507,
+                v487);
+              v200 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+              *(_DWORD *)v569[0] = v200;
+              v201 = v569[0];
+              *((_DWORD *)v569[0] + 2) = 52;
+              *((_WORD *)v201 + 6) = *(_WORD *)(*((_QWORD *)v4 + 6) + 30LL);
+              *((_DWORD *)v201 + 4) = *((_DWORD *)v4 + 9);
+              *((_DWORD *)v201 + 5) = *((_DWORD *)v4 + 10);
+              SavePetLog(v201);
+              v202 = PlayerStallBox::IncSerialByIndex((PlayerStallBox *)v165, v507);
+              v203 = v202;
+              if ( !*(_QWORD *)(v197 + 16) )
+                __assert__(
+                  "/home/rtm_wuling/src_mi/Server/Server/Item/Item.inl",
+                  897,
+                  "const CHAR* Item::GetName() const",
+                  "m_pPet");
+              v204 = *(_QWORD *)(v197 + 16) + 20LL;
+              v205 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+              RecordOpt::Excute(5, *((_DWORD *)v162 + 4) + 501368, v205, v204, 1, v206);
+              v591 = 0;
+              v592 = 5;
+              v593 = 2;
+              v594 = v487;
+              v597 = v564;
+              v207 = *((_BYTE *)v162 + 164592) + 1;
+              *((_BYTE *)v162 + 164592) = v207;
+              v598 = 24;
+              LOWORD(v599[0]) = v540;
+              WORD1(v599[0]) = v552;
+              WORD2(v599[0]) = v531;
+              LODWORD(v599[1]) = v559;
+              BYTE4(v599[1]) = v520;
+              BYTE5(v599[1]) = 1;
+              LODWORD(v599[2]) = v203;
+              BYTE4(v599[2]) = v207;
+              (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v590);
+              std::unique_ptr<PET_LOG_PARAM>::~unique_ptr(v569);
+              goto LABEL_19;
+            }
+            if ( v193 != -5 )
+              __assert__(
+                "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+                975,
+                "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+                "0");
+            v568 = 11;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            v195 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v196 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(1, "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NOT_ENOUGH_ROOM_IN_STALL", v196, v195);
+          }
+          else
+          {
+            v568 = 11;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            v191 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v192 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(1, "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NOT_ENOUGH_ROOM", v192, v191);
+          }
+          std::unique_ptr<PET_LOG_PARAM>::~unique_ptr(v569);
+          goto LABEL_375;
+        }
+      }
+      goto LABEL_314;
+    }
+    if ( v556 || v548 != 4 )
+      goto LABEL_19;
+    LODWORD(v573[1]) = -1;
+    LODWORD(v573[0]) = -1;
+    WORD2(v573[0]) = -1;
+    WORD2(v573[1]) = 0;
+    if ( v400 != 16 )
+      __assert__(
+        "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+        116,
+        "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+        "ExtraInfoL == ExtraData.GetSize()");
+    v573[1] = *(_QWORD *)((char *)this + 45);
+    qmemcpy(v573, v394, 8u);
+    v571[0] = (PET_LOG_PARAM *)v573[0];
+    v16 = v573[1];
+    LODWORD(v571[1]) = v573[1];
+    v528 = BYTE4(v573[1]);
+    v17 = BYTE5(v573[1]);
+    v511 = SWORD2(v573[0]);
+    v549 = *(_DWORD *)((char *)v573 + 2);
+    v496 = SWORD1(v573[0]);
+    v537 = v573[0];
+    v478 = SLOWORD(v573[0]);
+    v459 = BYTE5(v573[1]);
+    v443 = BYTE4(v573[1]);
+    v18 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+    CacheLog(
+      1,
+      "Recieve:CGItemSynchHandler::AUTO POS_BAG->POS_PLAYERSHOP ObjGUID=%X, nStallIndex=%d nShopSerial=%d shopid=(%d)(%d)(%d)(%d)",
+      v18,
+      v443,
+      v459,
+      v478,
+      v496,
+      v511,
+      v16);
+    if ( (HIWORD(v549) & (unsigned __int16)(v537 & v549)) == -1 && v16 == -1 )
+    {
+      v20 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::AUTO POS_BAG->POS_PLAYERSHOP ObjGUID=%X, invalid shopid", v20);
+      goto LABEL_375;
+    }
+    if ( !HIDWORD(v563) && !(_WORD)v563 )
+    {
+      v21 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::AUTO POS_BAG->POS_PLAYERSHOP ObjGUID=%X, ItemGuid.isNull()", v21);
+      goto LABEL_375;
+    }
+    if ( v528 > 0xAu )
+    {
+      v19 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::AUTO POS_BAG->POS_PLAYERSHOP ObjGUID=%X, invalid nStallIndex", v19);
+      goto LABEL_375;
+    }
+    v22 = *(_QWORD *)(v5 + 120);
+    LOWORD(v571[0]) = v537;
+    *(_DWORD *)((char *)v571 + 2) = v549;
+    LODWORD(v571[1]) = v16;
+    v23 = PlayerShopManager::GetPlayerShopByGUID(v22, (__int64)v571[0], v16);
+    v24 = v23;
+    if ( !v23 )
+    {
+      v25 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::AUTO POS_BAG->POS_PLAYERSHOP ObjGUID=%X, No shop!!", v25);
+      goto LABEL_375;
+    }
+    if ( *(_BYTE *)(*(_QWORD *)(v23 + 16) + 1LL) == 2 )
+    {
+      v568 = 1;
+      (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+      v26 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+      v27 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_ILLEGAL:BAG->SHOP", v27, v26);
+      goto LABEL_375;
+    }
+    if ( v17 != *(_BYTE *)(v23 + 164592) )
+      goto LABEL_314;
+    v28 = *(_DWORD *)(*(_QWORD *)(v23 + 16) + 160LL) == (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+    v29 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+    if ( !(v28 | (unsigned int)PlayerShop::IsPartner((PlayerShop *)v24, v29)) )
+    {
+      v30 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+      v31 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::objGUID=%X Name=%s Has no right to add item", v31, v30);
+      goto LABEL_375;
+    }
+    v460 = (PlayerStallBox *)PlayerShop::GetPlayerStallBoxByIndex((PlayerShop *)v24, v528);
+    if ( !v460 )
+    {
+      v32 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::AUTO POS_BAG->POS_PLAYERSHOP ObjGUID=%X, No StallBox!!", v32);
+      goto LABEL_375;
+    }
+    MatContain = (ItemContainer *)Obj_Human::GetMatContain(v4);
+    BaseContain = (Item *)Obj_Human::GetBaseContain(v4);
+    v34 = (*(__int64 (__fastcall **)(ItemContainer *, __int64 *))(*(_QWORD *)MatContain + 152LL))(MatContain, &v563);
+    if ( v34 < 0 )
+    {
+      MatContain = BaseContain;
+      if ( (*(int (__fastcall **)(Item *, __int64 *))(*(_QWORD *)BaseContain + 152LL))(BaseContain, &v563) < 0 )
+      {
+LABEL_53:
+        v568 = 1;
+        (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+        v35 = HIDWORD(v563);
+        v36 = BYTE1(v563);
+        v37 = (unsigned __int8)v563;
+        v38 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+        v39 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(
+          1,
+          "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_ILLEGAL:World = %d, Server = %d, Serial = %d ",
+          v39,
+          v38,
+          v37,
+          v36,
+          v35);
+        goto LABEL_375;
+      }
+    }
+    v497 = (*(__int64 (__fastcall **)(ItemContainer *, __int64 *))(*(_QWORD *)MatContain + 152LL))(MatContain, &v563);
+    v513 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*(_QWORD *)MatContain + 200LL))(
+                     MatContain,
+                     v497);
+    if ( (unsigned int)Item::IsPWLock(v513) )
+      goto LABEL_333;
+    if ( !(unsigned int)Item::GetItemBind(v513) )
+    {
+      v41 = Item::GetItemTableIndex(v513);
+      if ( (unsigned __int8)ItemTable::GetItemYuanBaoTrade((ItemTable *)&g_ItemTable, v41) )
+      {
+        if ( (unsigned int)Item::IsRuler(v513, 4) )
+        {
+          v50 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          PlayerShop::CheckItemGUIDUnique(v24, v50, v563, v497);
+          v51 = ItemOperator::MoveItem(
+                  (ItemOperator *)&g_ItemOperator,
+                  MatContain,
+                  v497,
+                  (PlayerStallBox *)((char *)v460 + 8),
+                  -1);
+          v479 = v51;
+          if ( v51 < 0 )
+          {
+            if ( v51 != -5 )
+              __assert__(
+                "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+                324,
+                "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+                "0");
+            v568 = 8;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            v58 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v59 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(1, "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NOT_ENOUGH_ROOM_IN_STALL", v59, v58);
+            goto LABEL_375;
+          }
+          v514 = (Item *)(*(__int64 (__fastcall **)(__int64, _QWORD))(*((_QWORD *)v460 + 1) + 200LL))(
+                           (__int64)v460 + 8,
+                           (unsigned int)v51);
+          if ( !Item::IsEmpty(v514) )
+          {
+            v431 = Item::GetLayedNum(v514);
+            v423 = Item::GetItemTableIndex(v514);
+            v417 = Item::GetGUID(v514) >> 32;
+            v52 = (unsigned __int8)((unsigned __int16)Item::GetGUID(v514) >> 8);
+            v444 = (unsigned __int8)Item::GetGUID(v514);
+            v53 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              14,
+              "<ITEM> [MOVE] ObjGUID:%X, %s->%s, ItemGuid:world(%d)server(%d)serial(%d)itemIndex(%d)num(%d), SourceIndex:"
+              "%d, DestIndex:%d",
+              v53,
+              "Package",
+              "Player Shop",
+              v444,
+              v52,
+              v417,
+              v423,
+              v431,
+              v497,
+              v479);
+            ITEM_LOG_PARAM::ITEM_LOG_PARAM((ITEM_LOG_PARAM *)v582);
+            *(_DWORD *)&v582[20] = 213;
+            *(_DWORD *)&v582[4] = HIDWORD(v563);
+            *(_WORD *)v582 = v563;
+            *(_DWORD *)&v582[8] = Item::GetItemTableIndex(v514);
+            v583 = v497;
+            *(_DWORD *)&v582[12] = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            v585 = *((_DWORD *)v4 + 9);
+            v586 = *((_DWORD *)v4 + 10);
+            v584 = *(_WORD *)(*((_QWORD *)v4 + 6) + 30LL);
+            ItemBind = Item::GetItemBind(v514);
+            ItemLock = Item::GetItemLock(v514);
+            IsPWLock = Item::IsPWLock(v514);
+            SaveItemLog((ITEM_LOG_PARAM *)v582);
+            v54 = (unsigned __int8)PlayerStallBox::IncSerialByIndex(v460, v479);
+            v498 = Item::GetLayedNum(v514);
+            v515 = Item::GetItemTableIndex(v514);
+            v55 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            RecordOpt::Excute(2, *(_DWORD *)(v24 + 16) + 501368, v55, v515, v498, v56);
+            v591 = 0;
+            v592 = 0;
+            v593 = 4;
+            v594 = v479;
+            v596 = HIDWORD(v563);
+            v595 = v563;
+            v57 = *(_BYTE *)(v24 + 164592) + 1;
+            *(_BYTE *)(v24 + 164592) = v57;
+            v598 = 24;
+            LOWORD(v599[0]) = v537;
+            *(_DWORD *)((char *)v599 + 2) = v549;
+            LODWORD(v599[1]) = v16;
+            BYTE4(v599[1]) = v528;
+            LODWORD(v599[2]) = v54;
+            BYTE4(v599[2]) = v57;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v590);
+          }
+          goto LABEL_19;
+        }
+        goto LABEL_342;
+      }
+      goto LABEL_339;
+    }
+LABEL_58:
+    Text = (const char *)StringTable_GetText(124);
+    Obj_Human::SendNoticeAndChatMsg(v4, Text);
+    v43 = HIDWORD(v563);
+    v44 = BYTE1(v563);
+    v45 = (unsigned __int8)v563;
+    v46 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+    v47 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+    CacheLog(
+      1,
+      "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, item is already GetItemBind:World = %d, Server = %d, Serial = %d ",
+      v47,
+      v46,
+      v45,
+      v44,
+      v43);
+    goto LABEL_375;
+  }
+  if ( v11 == 1 )
+  {
+    if ( v556 )
+    {
+      if ( v556 != 4 )
+        goto LABEL_19;
+      if ( v548 )
+      {
+        if ( v548 == 4 )
+        {
+          *(_DWORD *)&v582[8] = -1;
+          *(_DWORD *)v582 = -1;
+          *(_WORD *)&v582[4] = -1;
+          v582[12] = 0;
+          *(_DWORD *)&v582[16] = 0;
+          *(_DWORD *)&v582[20] = 0;
+          v582[24] = 0;
+          if ( v400 != 28 )
+            __assert__(
+              "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+              1685,
+              "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+              "ExtraInfoL == ExtraData.GetSize()");
+          *(_QWORD *)&v582[20] = *(_QWORD *)((char *)this + 57);
+          qmemcpy(v582, v394, 0x18u);
+          v573[0] = *(_QWORD *)v582;
+          v347 = *(_DWORD *)&v582[8];
+          LODWORD(v573[1]) = *(_DWORD *)&v582[8];
+          v510 = v582[12];
+          v492 = *(_DWORD *)&v582[16];
+          v475 = *(_DWORD *)&v582[20];
+          v414 = v582[24];
+          v562 = *(_WORD *)&v582[4];
+          v457 = *(__int16 *)&v582[4];
+          v523 = *(_WORD *)&v582[2];
+          v441 = *(__int16 *)&v582[2];
+          v555 = *(_WORD *)v582;
+          v429 = *(__int16 *)v582;
+          v348 = v582[24];
+          v422 = v582[12];
+          v349 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(
+            1,
+            "Recieve:CGItemSynchHandler::MANU POS_PLAYERSHOP->POS_PLAYERSHOP ObjGUID=%X, nToIndex=%d, nStallIndex=%d uSer"
+            "ialSource=%d uSerialDest=%d nShopSerial=%d shopid=(%d)(%d)(%d)(%d)",
+            v349,
+            v527,
+            v422,
+            v492,
+            v475,
+            v348,
+            v429,
+            v441,
+            v457,
+            v347);
+          if ( (v562 & (unsigned __int16)(v523 & v555)) == -1 && v347 == -1 )
+          {
+            v351 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(1, "CGItemSynchHandler::MANU POS_PLAYERSHOP->POS_PLAYERSHOP ObjGUID=%X, invalid shopid", v351);
+            goto LABEL_375;
+          }
+          if ( !HIDWORD(v563) && !(_WORD)v563 )
+          {
+            v352 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(1, "CGItemSynchHandler::MANU POS_PLAYERSHOP->POS_PLAYERSHOP ObjGUID=%X, ItemGuid.isNull()", v352);
+            goto LABEL_375;
+          }
+          if ( v510 > 0xAu )
+          {
+            v350 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(1, "CGItemSynchHandler::MANU POS_PLAYERSHOP->POS_PLAYERSHOP ObjGUID=%X, invalid nStallIndex", v350);
+            goto LABEL_375;
+          }
+          v353 = *(_QWORD *)(v5 + 120);
+          LOWORD(v573[0]) = v555;
+          WORD1(v573[0]) = v523;
+          WORD2(v573[0]) = v562;
+          LODWORD(v573[1]) = v347;
+          v430 = (PlayerShop *)PlayerShopManager::GetPlayerShopByGUID(v353, v573[0], v347);
+          if ( !v430 )
+          {
+            v355 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(1, "CGItemSynchHandler::MANU POS_PLAYERSHOP->POS_PLAYERSHOP ObjGUID=%X, No shop!!", v355);
+            goto LABEL_375;
+          }
+          v354 = PlayerShop::GetPlayerStallBoxByIndex(v430, v510);
+          v458 = (PlayerStallBox *)v354;
+          if ( !v354 )
+          {
+            v357 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(1, "CGItemSynchHandler::MANU POS_PLAYERSHOP->POS_PLAYERSHOP ObjGUID=%X, No StallBox!!", v357);
+            goto LABEL_375;
+          }
+          v442 = (ItemContainer *)(v354 + 8);
+          v356 = (*(__int64 (__fastcall **)(__int64, __int64 *))(*(_QWORD *)(v354 + 8) + 152LL))(v354 + 8, &v563);
+          v358 = v356;
+          if ( v414 != *((_BYTE *)v430 + 164592) )
+          {
+            v568 = 19;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            v359 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v360 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(1, "CGItemSynchHandler::ObjGUID=%X Name=%s Serials had changed", v360, v359);
+            goto LABEL_375;
+          }
+          if ( v356 < 0 )
+          {
+            v568 = 10;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            v362 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v363 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              1,
+              "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NEED_NEW_COPY: IndexInStallSource = %d, IndexInStallDest = %d",
+              v363,
+              v362,
+              v358,
+              v527);
+            goto LABEL_375;
+          }
+          v361 = PlayerStallBox::GetSerialByIndex(v458, v356);
+          if ( v361 > v492 || (unsigned __int8)PlayerStallBox::GetSerialByIndex(v458, v527) > v475 )
+          {
+            v568 = 10;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            v365 = (unsigned __int8)PlayerStallBox::GetSerialByIndex(v458, v527);
+            v366 = (unsigned __int8)PlayerStallBox::GetSerialByIndex(v458, v358);
+            v367 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v368 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              1,
+              "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NEED_NEW_COPY: SerialSource = %d, BoxSerialDest = %d"
+              ", SerialDest = %d, BoxSerialDeset = %d",
+              v368,
+              v367,
+              v492,
+              v366,
+              v475,
+              v365);
+            goto LABEL_375;
+          }
+          v364 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*((_QWORD *)v458 + 1) + 200LL))(
+                           v442,
+                           v358);
+          v493 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*((_QWORD *)v458 + 1) + 200LL))(
+                           v442,
+                           v527);
+          if ( Item::IsEmpty(v493) )
+          {
+            v477 = Item::GetLayedNum(v364);
+            v416 = Item::GetItemTableIndex(v364);
+            v406 = Item::GetGUID(v364) >> 32;
+            v495 = (unsigned __int8)((unsigned __int16)Item::GetGUID(v364) >> 8);
+            v375 = (unsigned __int8)Item::GetGUID(v364);
+            v376 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              14,
+              "<ITEM> [MOVE] ObjGUID:%X, %s->%s, ItemGuid:world(%d)server(%d)serial(%d)itemIndex(%d)num(%d), SourceIndex:"
+              "%d, DestIndex:%d",
+              v376,
+              "Player Shop",
+              "Player Shop",
+              v375,
+              v495,
+              v406,
+              v416,
+              v477,
+              v358,
+              v527);
+            if ( (int)ItemOperator::MoveItem((ItemOperator *)&g_ItemOperator, v442, v358, v442, v527) < 0 )
+              __assert__(
+                "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+                1889,
+                "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+                "0");
+            v377 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*((_QWORD *)v458 + 1) + 200LL))(
+                             v442,
+                             v527);
+            if ( !Item::IsEmpty(v377) )
+            {
+              v378 = (unsigned __int8)PlayerStallBox::IncSerialByIndex(v458, v358);
+              v379 = PlayerStallBox::IncSerialByIndex(v458, v527);
+              v591 = 0;
+              v592 = 4;
+              v593 = 4;
+              v594 = v527;
+              v596 = HIDWORD(v563);
+              v595 = v563;
+              v547 = *((_BYTE *)v430 + 164592);
+              *((_BYTE *)v430 + 164592) = v547 + 1;
+              v598 = 28;
+              LOWORD(v599[0]) = v555;
+              WORD1(v599[0]) = v523;
+              WORD2(v599[0]) = v562;
+              LODWORD(v599[1]) = v347;
+              BYTE4(v599[1]) = v510;
+              LODWORD(v599[2]) = v378;
+              HIDWORD(v599[2]) = v379;
+              LOBYTE(v599[3]) = v547 + 1;
+              (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v590);
+            }
+          }
+          else
+          {
+            v405 = Item::GetLayedNum(v493);
+            v399 = Item::GetItemTableIndex(v493);
+            v390 = Item::GetGUID(v493) >> 32;
+            v476 = (unsigned __int8)((unsigned __int16)Item::GetGUID(v493) >> 8);
+            v494 = (unsigned __int8)Item::GetGUID(v493);
+            v526 = Item::GetLayedNum(v364);
+            v393 = Item::GetItemTableIndex(v364);
+            v387 = Item::GetGUID(v364) >> 32;
+            v415 = (unsigned __int8)((unsigned __int16)Item::GetGUID(v364) >> 8);
+            v370 = (unsigned __int8)Item::GetGUID(v364);
+            v371 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              14,
+              "<ITEM> [EXCHANGE] ObjGUID:%X, %s->%s, SourceItemGuid:world(%d)server(%d)serial(%d)itemindex(%d)num(%d), De"
+              "stItemGuid:world(%d)server(%d)serial(%d)itemindex(%d)num(%d), SourceIndex:%d, DestIndex:%d",
+              v371,
+              "Package",
+              "Player Shop",
+              v370,
+              v415,
+              v387,
+              v393,
+              v526,
+              v494,
+              v476,
+              v390,
+              v399,
+              v405,
+              v358,
+              v527);
+            if ( (int)ItemOperator::ExchangeItem((ItemOperator *)&g_ItemOperator, v442, v358, v442, v527) < 0 )
+              __assert__(
+                "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+                1830,
+                "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+                "0");
+            v372 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*((_QWORD *)v458 + 1) + 200LL))(
+                             v442,
+                             v527);
+            if ( !Item::IsEmpty(v372) )
+            {
+              v373 = (unsigned __int8)PlayerStallBox::IncSerialByIndex(v458, v358);
+              v374 = PlayerStallBox::IncSerialByIndex(v458, v527);
+              v591 = 2;
+              v592 = 4;
+              v593 = 4;
+              v594 = v527;
+              v596 = HIDWORD(v563);
+              v595 = v563;
+              v546 = *((_BYTE *)v430 + 164592);
+              *((_BYTE *)v430 + 164592) = v546 + 1;
+              v598 = 28;
+              LOWORD(v599[0]) = v555;
+              WORD1(v599[0]) = v523;
+              WORD2(v599[0]) = v562;
+              LODWORD(v599[1]) = v347;
+              BYTE4(v599[1]) = v510;
+              LODWORD(v599[2]) = v373;
+              HIDWORD(v599[2]) = v374;
+              LOBYTE(v599[3]) = v546 + 1;
+              (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v590);
+            }
+          }
+        }
+        goto LABEL_19;
+      }
+      LODWORD(v573[1]) = -1;
+      LODWORD(v573[0]) = -1;
+      WORD2(v573[0]) = -1;
+      BYTE4(v573[1]) = 0;
+      LODWORD(v574) = 0;
+      BYTE4(v574) = 0;
+      if ( v400 != 24 )
+        __assert__(
+          "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+          1389,
+          "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+          "ExtraInfoL == ExtraData.GetSize()");
+      v574 = *(_QWORD *)((char *)this + 53);
+      qmemcpy(v573, v394, sizeof(v573));
+      v571[0] = (PET_LOG_PARAM *)v573[0];
+      v561 = v573[1];
+      LODWORD(v571[1]) = v573[1];
+      v491 = BYTE4(v573[1]);
+      v470 = v574;
+      v420 = BYTE4(v574);
+      v554 = WORD2(v573[0]);
+      v455 = SWORD2(v573[0]);
+      v522 = WORD1(v573[0]);
+      v439 = SWORD1(v573[0]);
+      v509 = v573[0];
+      v266 = SLOWORD(v573[0]);
+      v267 = BYTE4(v574);
+      v427 = BYTE4(v573[1]);
+      v268 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(
+        1,
+        "Recieve:CGItemSynchHandler::MANU POS_PLAYERSHOP->POS_BAG ObjGUID=%X, nToIndex=%d, nStallIndex=%d uSerial=%d nSho"
+        "pSerial=%d shopid=(%d)(%d)(%d)(%d)",
+        v268,
+        v527,
+        v427,
+        v470,
+        v267,
+        v266,
+        v439,
+        v455,
+        v561);
+      if ( (v554 & (unsigned __int16)(v509 & v522)) == -1 && v561 == -1 )
+      {
+        v270 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(1, "CGItemSynchHandler::MANU POS_PLAYERSHOP->POS_BAG ObjGUID=%X, invalid shopid", v270);
+        goto LABEL_375;
+      }
+      if ( !HIDWORD(v563) && !(_WORD)v563 )
+      {
+        v271 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(1, "CGItemSynchHandler::MANU POS_PLAYERSHOP->POS_BAG ObjGUID=%X, ItemGuid.isNull()", v271);
+        goto LABEL_375;
+      }
+      if ( v491 > 0xAu )
+      {
+        v269 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(1, "CGItemSynchHandler::MANU POS_PLAYERSHOP->POS_BAG ObjGUID=%X, invalid nStallIndex", v269);
+        goto LABEL_375;
+      }
+      v272 = *(_QWORD *)(v5 + 120);
+      LOWORD(v571[0]) = v509;
+      WORD1(v571[0]) = v522;
+      WORD2(v571[0]) = v554;
+      LODWORD(v571[1]) = v561;
+      v273 = (PlayerShop *)PlayerShopManager::GetPlayerShopByGUID(v272, (__int64)v571[0], v561);
+      v274 = v273;
+      if ( !v273 )
+      {
+        v276 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(1, "CGItemSynchHandler::MANU POS_PLAYERSHOP->POS_BAG ObjGUID=%X, No shop!!", v276);
+        goto LABEL_375;
+      }
+      v275 = PlayerShop::GetPlayerStallBoxByIndex(v273, v491);
+      v440 = (PlayerStallBox *)v275;
+      if ( !v275 )
+      {
+        v277 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(1, "CGItemSynchHandler::MANU POS_PLAYERSHOP->POS_BAG ObjGUID=%X, No StallBox!!", v277);
+        goto LABEL_375;
+      }
+      v278 = *(_DWORD *)(*((_QWORD *)v274 + 2) + 160LL) == (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      v279 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      v280 = PlayerShop::IsPartner(v274, v279);
+      if ( v278 | v280 )
+      {
+        if ( v420 != *((_BYTE *)v274 + 164592) )
+          goto LABEL_314;
+        v428 = (PlayerStallBox *)((char *)v440 + 8);
+        v283 = (*(__int64 (__fastcall **)(__int64, __int64 *))(*((_QWORD *)v440 + 1) + 152LL))((__int64)v440 + 8, &v563);
+        v284 = v283;
+        v456 = v283;
+        if ( v283 < 0 )
+        {
+          v568 = 10;
+          (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+          v286 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+          v287 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(
+            1,
+            "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NEED_NEW_COPY: IndexInStall = %d",
+            v287,
+            v286,
+            v284);
+          goto LABEL_375;
+        }
+        v285 = PlayerStallBox::GetSerialByIndex(v440, v283);
+        if ( v285 > v470 )
+        {
+          v568 = 10;
+          (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+          v289 = (unsigned __int8)PlayerStallBox::GetSerialByIndex(v440, v456);
+          v290 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+          v291 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(
+            1,
+            "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NEED_NEW_COPY: Serial = %d, BoxSerial = %d",
+            v291,
+            v290,
+            v470,
+            v289);
+          goto LABEL_375;
+        }
+        v288 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*((_QWORD *)v440 + 1) + 200LL))(v428, v456);
+        v292 = v288;
+        if ( !v288 )
+          __assert__(
+            "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+            1488,
+            "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+            "pItem");
+        v293 = Item::GetItemTableIndex(v288);
+        v294 = (ItemContainer *)HumanItemLogic::GetItemContain(v4, (Obj_Human *)v293);
+        v421 = v527;
+        if ( !(*(unsigned int (__fastcall **)(ItemContainer *, _QWORD))(*(_QWORD *)v294 + 40LL))(v294, v527) )
+        {
+          v297 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+          v298 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(
+            1,
+            "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, pBagContainer->IsInContainer(nToIndex)",
+            v298,
+            v297);
+          goto LABEL_375;
+        }
+        v296 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*(_QWORD *)v294 + 200LL))(v294, v527);
+        v471 = v296;
+        if ( !v296 )
+          __assert__(
+            "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+            1497,
+            "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+            "pDestItem");
+        if ( Item::IsEmpty(v296) )
+        {
+          v413 = Item::GetLayedNum(v292);
+          v404 = Item::GetItemTableIndex(v292);
+          v398 = Item::GetGUID(v292) >> 32;
+          v474 = (unsigned __int8)((unsigned __int16)Item::GetGUID(v292) >> 8);
+          v338 = (unsigned __int8)Item::GetGUID(v292);
+          v339 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(
+            14,
+            "<ITEM> [MOVE] ObjGUID:%X, %s->%s, ItemGuid:world(%d)server(%d)serial(%d)itemIndex(%d)num(%d), SourceIndex:%d, DestIndex:%d",
+            v339,
+            "Player Shop",
+            "Package",
+            v338,
+            v474,
+            v398,
+            v404,
+            v413,
+            v456,
+            v527);
+          if ( (int)ItemOperator::MoveItem((ItemOperator *)&g_ItemOperator, v428, v456, v294, v527) < 0 )
+            __assert__(
+              "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+              1671,
+              "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+              "0");
+          v340 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*(_QWORD *)v294 + 200LL))(v294, v527);
+          if ( !Item::IsEmpty(v340) )
+          {
+            ITEM_LOG_PARAM::ITEM_LOG_PARAM((ITEM_LOG_PARAM *)v582);
+            *(_DWORD *)&v582[20] = 214;
+            v341 = Item::GetGUID(v340);
+            *(_DWORD *)&v582[4] = HIDWORD(v341);
+            *(_WORD *)v582 = v341;
+            *(_DWORD *)&v582[8] = Item::GetItemTableIndex(v340);
+            v583 = v527;
+            *(_DWORD *)&v582[12] = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            v585 = *((_DWORD *)v4 + 9);
+            v586 = *((_DWORD *)v4 + 10);
+            v584 = *(_WORD *)(*((_QWORD *)v4 + 6) + 30LL);
+            ItemBind = Item::GetItemBind(v340);
+            ItemLock = Item::GetItemLock(v340);
+            IsPWLock = Item::IsPWLock(v340);
+            SaveItemLog((ITEM_LOG_PARAM *)v582);
+            Obj_Human::OnItemEnterBag(v4, v340, v527);
+            v545 = (unsigned __int8)PlayerStallBox::IncSerialByIndex(v440, v456);
+            v342 = (*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*(_QWORD *)v294 + 24LL))(v294, v527);
+            v535 = Item::GetLayedNum(v340);
+            v343 = Item::GetItemTableIndex(v340);
+            v344 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            RecordOpt::Excute(3, *((_DWORD *)v274 + 4) + 501368, v344, v343, v535, v345);
+            v591 = 0;
+            v592 = 4;
+            v593 = 0;
+            v594 = v342;
+            v596 = HIDWORD(v563);
+            v595 = v563;
+            v346 = *((_BYTE *)v274 + 164592) + 1;
+            *((_BYTE *)v274 + 164592) = v346;
+            v598 = 24;
+            LOWORD(v599[0]) = v509;
+            WORD1(v599[0]) = v522;
+            WORD2(v599[0]) = v554;
+            LODWORD(v599[1]) = v561;
+            BYTE4(v599[1]) = v491;
+            BYTE5(v599[1]) = 1;
+            LODWORD(v599[2]) = v545;
+            BYTE4(v599[2]) = v346;
+            (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v590);
+          }
+          goto LABEL_19;
+        }
+        if ( (unsigned int)Item::IsPWLock(v471) )
+        {
+LABEL_333:
+          v300 = HIDWORD(v563);
+          v301 = BYTE1(v563);
+          v302 = (unsigned __int8)v563;
+          v303 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+          v304 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(
+            1,
+            "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, item is already pw locked:World = %d, Server = %d, Serial = %d ",
+            v304,
+            v303,
+            v302,
+            v301,
+            v300);
+          goto LABEL_375;
+        }
+        if ( (unsigned int)Item::GetItemBind(v471) )
+        {
+          v306 = (const char *)StringTable_GetText(126);
+          Obj_Human::SendNoticeAndChatMsg(v4, v306);
+          v307 = HIDWORD(v563);
+          v308 = BYTE1(v563);
+          v309 = (unsigned __int8)v563;
+          v310 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+          v311 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          CacheLog(
+            1,
+            "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, item is already GetItemBind:World = %d, Server = %d, Serial = %d ",
+            v311,
+            v310,
+            v309,
+            v308,
+            v307);
+          goto LABEL_375;
+        }
+        v305 = Item::GetItemTableIndex(v471);
+        if ( (unsigned __int8)ItemTable::GetItemYuanBaoTrade((ItemTable *)&g_ItemTable, v305) )
+        {
+          if ( (unsigned int)Item::IsRuler(v471, 4) )
+          {
+            ItemClass = Item::GetItemClass(v471);
+            v326 = Item::GetItemClass(v292);
+            if ( ItemClass == v326 )
+            {
+              v403 = Item::GetLayedNum(v471);
+              v397 = Item::GetItemTableIndex(v471);
+              v389 = Item::GetGUID(v471) >> 32;
+              v533 = (unsigned __int8)((unsigned __int16)Item::GetGUID(v471) >> 8);
+              v472 = (unsigned __int8)Item::GetGUID(v471);
+              v525 = Item::GetLayedNum(v292);
+              v392 = Item::GetItemTableIndex(v292);
+              v386 = Item::GetGUID(v292) >> 32;
+              v412 = (unsigned __int8)((unsigned __int16)Item::GetGUID(v292) >> 8);
+              v327 = (unsigned __int8)Item::GetGUID(v292);
+              v328 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+              CacheLog(
+                14,
+                "<ITEM> [EXCHANGE] ObjGUID:%X, %s->%s, SourceItemGuid:world(%d)server(%d)serial(%d)itemindex(%d)num(%d), "
+                "DestItemGuid:world(%d)server(%d)serial(%d)itemindex(%d)num(%d), SourceIndex:%d, DestIndex:%d",
+                v328,
+                "Player Shop",
+                "Package",
+                v327,
+                v412,
+                v386,
+                v392,
+                v525,
+                v472,
+                v533,
+                v389,
+                v397,
+                v403,
+                v456,
+                v536);
+              if ( (int)ItemOperator::ExchangeItem((ItemOperator *)&g_ItemOperator, v428, v456, v294, v536) < 0 )
+                __assert__(
+                  "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+                  1594,
+                  "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+                  "0");
+              v329 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*(_QWORD *)v294 + 200LL))(v294, v536);
+              if ( !Item::IsEmpty(v329) )
+              {
+                v534 = (unsigned __int8)PlayerStallBox::IncSerialByIndex(v440, v456);
+                v330 = (*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*(_QWORD *)v294 + 24LL))(v294, v421);
+                v544 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*((_QWORD *)v440 + 1) + 200LL))(
+                                 v428,
+                                 v456);
+                v473 = Item::GetLayedNum(v329);
+                v331 = Item::GetItemTableIndex(v329);
+                v332 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+                RecordOpt::Excute(3, *((_DWORD *)v274 + 4) + 501368, v332, v331, v473, v333);
+                v334 = Item::GetLayedNum(v544);
+                LODWORD(v544) = Item::GetItemTableIndex(v544);
+                v335 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+                RecordOpt::Excute(2, *((_DWORD *)v274 + 4) + 501368, v335, (_DWORD)v544, v334, v336);
+                v591 = 2;
+                v592 = 4;
+                v593 = 0;
+                v594 = v330;
+                v596 = HIDWORD(v563);
+                v595 = v563;
+                v337 = *((_BYTE *)v274 + 164592) + 1;
+                *((_BYTE *)v274 + 164592) = v337;
+                v598 = 24;
+                LOWORD(v599[0]) = v509;
+                WORD1(v599[0]) = v522;
+                WORD2(v599[0]) = v554;
+                LODWORD(v599[1]) = v561;
+                BYTE4(v599[1]) = v491;
+                LODWORD(v599[2]) = v534;
+                BYTE4(v599[2]) = v337;
+                (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v590);
+              }
+              goto LABEL_19;
+            }
+LABEL_282:
+            v238 = HIDWORD(v563);
+            v239 = BYTE1(v563);
+            v240 = (unsigned __int8)v563;
+            v241 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+            v242 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              1,
+              "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, item is different type:World = %d, Server = %d, Serial = %d ",
+              v242,
+              v241,
+              v240,
+              v239,
+              v238);
+            goto LABEL_375;
+          }
+          goto LABEL_342;
+        }
+        goto LABEL_339;
+      }
+LABEL_154:
+      v127 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+      v128 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::ObjGUID=%X Name=%s Has no right to remove item", v128, v127);
+      goto LABEL_375;
+    }
+    if ( v548 != 4 )
+      goto LABEL_19;
+    LODWORD(v571[1]) = -1;
+    LODWORD(v571[0]) = -1;
+    WORD2(v571[0]) = -1;
+    BYTE4(v571[1]) = 0;
+    LODWORD(v572) = 0;
+    BYTE4(v572) = 0;
+    if ( v400 != 24 )
+      __assert__(
+        "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+        1050,
+        "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+        "ExtraInfoL == ExtraData.GetSize()");
+    v572 = *(_QWORD *)((char *)this + 53);
+    qmemcpy(v571, v394, sizeof(v571));
+    v569[0] = v571[0];
+    v560 = (int)v571[1];
+    LODWORD(v569[1]) = v571[1];
+    v469 = BYTE4(v571[1]);
+    v488 = v572;
+    v419 = BYTE4(v572);
+    v521 = WORD2(v571[0]);
+    v452 = SWORD2(v571[0]);
+    v553 = WORD1(v571[0]);
+    v437 = SWORD1(v571[0]);
+    v508 = (__int16)v571[0];
+    v208 = SLOWORD(v571[0]);
+    v209 = BYTE4(v572);
+    v425 = BYTE4(v571[1]);
+    v210 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+    CacheLog(
+      1,
+      "Recieve:CGItemSynchHandler::MANU POS_BAG->POS_PLAYERSHOP ObjGUID=%X, nToIndex=%d, nStallIndex=%d uSerial=%d nShopS"
+      "erial=%d shopid=(%d)(%d)(%d)(%d)",
+      v210,
+      v527,
+      v425,
+      v488,
+      v209,
+      v208,
+      v437,
+      v452,
+      v560);
+    if ( (v521 & (unsigned __int16)(v508 & v553)) == -1 && v560 == -1 )
+    {
+      v212 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::MANU POS_BAG->POS_PLAYERSHOP ObjGUID=%X, invalid shopid", v212);
+      goto LABEL_375;
+    }
+    if ( !HIDWORD(v563) && !(_WORD)v563 )
+    {
+      v213 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::MANU POS_BAG->POS_PLAYERSHOP ObjGUID=%X, ItemGuid.isNull()", v213);
+      goto LABEL_375;
+    }
+    if ( v469 > 0xAu )
+    {
+      v211 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::MANU POS_BAG->POS_PLAYERSHOP ObjGUID=%X, invalid nStallIndex", v211);
+      goto LABEL_375;
+    }
+    v214 = *(_QWORD *)(v5 + 120);
+    LOWORD(v569[0]) = v508;
+    WORD1(v569[0]) = v553;
+    WORD2(v569[0]) = v521;
+    LODWORD(v569[1]) = v560;
+    v215 = (PlayerShop *)PlayerShopManager::GetPlayerShopByGUID(v214, (__int64)v569[0], v560);
+    v216 = v215;
+    if ( !v215 )
+    {
+      v218 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::MANU POS_BAG->POS_PLAYERSHOP ObjGUID=%X, No shop!!", v218);
+      goto LABEL_375;
+    }
+    v217 = PlayerShop::GetPlayerStallBoxByIndex(v215, v469);
+    v219 = (_QWORD *)v217;
+    if ( !v217 )
+    {
+      v220 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::MANU POS_BAG->POS_PLAYERSHOP ObjGUID=%X, No StallBox!!", v220);
+      goto LABEL_375;
+    }
+    v221 = *(_DWORD *)(*((_QWORD *)v216 + 2) + 160LL) == (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+    v222 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+    v223 = PlayerShop::IsPartner(v216, v222);
+    if ( !(v221 | v223) )
+    {
+      v224 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+      v225 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::ObjGUID=%X Name=%s Has no right to add item", v225, v224);
+      goto LABEL_375;
+    }
+    if ( v419 != *((_BYTE *)v216 + 164592) )
+    {
+LABEL_314:
+      v568 = 19;
+      (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+      v281 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+      v282 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(1, "CGItemSynchHandler::ObjGUID=%X Name=%s Serials had changed", v282, v281);
+      goto LABEL_375;
+    }
+    if ( (unsigned __int8)PlayerStallBox::GetSerialByIndex((PlayerStallBox *)v219, v527) != v488 )
+    {
+      v568 = 10;
+      (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+      v226 = (unsigned __int8)PlayerStallBox::GetSerialByIndex((PlayerStallBox *)v219, v527);
+      v227 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+      v228 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(
+        1,
+        "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, ERR_NEED_NEW_COPY: Serial = %d, BoxSerial = %d",
+        v228,
+        v227,
+        v488,
+        v226);
+      goto LABEL_375;
+    }
+    v438 = (ItemContainer *)Obj_Human::GetMatContain(v4);
+    v229 = Obj_Human::GetBaseContain(v4);
+    if ( (*(int (__fastcall **)(ItemContainer *, __int64 *))(*(_QWORD *)v438 + 152LL))(v438, &v563) < 0 )
+    {
+      v438 = (ItemContainer *)v229;
+      if ( (*(int (__fastcall **)(__int64, __int64 *))(*(_QWORD *)v229 + 152LL))(v229, &v563) < 0 )
+        goto LABEL_53;
+    }
+    v453 = (*(__int64 (__fastcall **)(ItemContainer *, __int64 *))(*(_QWORD *)v438 + 152LL))(v438, &v563);
+    v230 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(*(_QWORD *)v438 + 200LL))(v438, v453);
+    v489 = v230;
+    if ( !v230 )
+      __assert__(
+        "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+        1160,
+        "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+        "pItemInBag");
+    if ( (unsigned int)Item::IsPWLock(v230) )
+      goto LABEL_333;
+    if ( !(unsigned int)Item::GetItemBind(v489) )
+    {
+      v232 = Item::GetItemTableIndex(v489);
+      if ( (unsigned __int8)ItemTable::GetItemYuanBaoTrade((ItemTable *)&g_ItemTable, v232) )
+      {
+        if ( (unsigned int)Item::IsRuler(v489, 4) )
+        {
+          v235 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+          PlayerShop::CheckItemGUIDUnique(v216, v235, v563, v453);
+          v426 = (ItemContainer *)(v219 + 1);
+          v236 = (Item *)(*(__int64 (__fastcall **)(_QWORD *, _QWORD))(v219[1] + 200LL))(v219 + 1, v527);
+          if ( Item::IsEmpty(v236) )
+          {
+            v411 = Item::GetLayedNum(v489);
+            v402 = Item::GetItemTableIndex(v489);
+            v396 = Item::GetGUID(v489) >> 32;
+            v257 = (unsigned __int8)((unsigned __int16)Item::GetGUID(v489) >> 8);
+            v490 = (unsigned __int8)Item::GetGUID(v489);
+            v258 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              14,
+              "<ITEM> [MOVE] ObjGUID:%X, %s->%s, ItemGuid:world(%d)server(%d)serial(%d)itemIndex(%d)num(%d), SourceIndex:"
+              "%d, DestIndex:%d",
+              v258,
+              "Package",
+              "Player Shop",
+              v490,
+              v257,
+              v396,
+              v402,
+              v411,
+              v453,
+              v527);
+            if ( (int)ItemOperator::MoveItem((ItemOperator *)&g_ItemOperator, v438, v453, v426, v527) < 0 )
+              __assert__(
+                "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+                1353,
+                "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+                "0");
+            v259 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(v219[1] + 200LL))(v426, v527);
+            if ( !Item::IsEmpty(v259) )
+            {
+              ITEM_LOG_PARAM::ITEM_LOG_PARAM((ITEM_LOG_PARAM *)v582);
+              *(_DWORD *)&v582[20] = 213;
+              v260 = Item::GetGUID(v259);
+              *(_DWORD *)&v582[4] = HIDWORD(v260);
+              *(_WORD *)v582 = v260;
+              *(_DWORD *)&v582[8] = Item::GetItemTableIndex(v259);
+              v583 = v453;
+              *(_DWORD *)&v582[12] = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+              v585 = *((_DWORD *)v4 + 9);
+              v586 = *((_DWORD *)v4 + 10);
+              v584 = *(_WORD *)(*((_QWORD *)v4 + 6) + 30LL);
+              ItemBind = Item::GetItemBind(v259);
+              ItemLock = Item::GetItemLock(v259);
+              IsPWLock = Item::IsPWLock(v259);
+              SaveItemLog((ITEM_LOG_PARAM *)v582);
+              v543 = (unsigned __int8)PlayerStallBox::IncSerialByIndex((PlayerStallBox *)v219, v527);
+              v261 = Item::GetLayedNum(v259);
+              v262 = Item::GetItemTableIndex(v259);
+              v263 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+              RecordOpt::Excute(2, *((_DWORD *)v216 + 4) + 501368, v263, v262, v261, v264);
+              v591 = 0;
+              v592 = 0;
+              v593 = 4;
+              v594 = v527;
+              v596 = HIDWORD(v563);
+              v595 = v563;
+              v265 = *((_BYTE *)v216 + 164592) + 1;
+              *((_BYTE *)v216 + 164592) = v265;
+              v598 = 24;
+              LOWORD(v599[0]) = v508;
+              WORD1(v599[0]) = v553;
+              WORD2(v599[0]) = v521;
+              LODWORD(v599[1]) = v560;
+              BYTE4(v599[1]) = v469;
+              LODWORD(v599[2]) = v543;
+              BYTE4(v599[2]) = v265;
+              (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v590);
+            }
+            goto LABEL_19;
+          }
+          v409 = Item::GetItemClass(v236);
+          if ( v409 == (unsigned __int8)Item::GetItemClass(v489) )
+          {
+            v524 = Item::GetLayedNum(v236);
+            v391 = Item::GetItemTableIndex(v236);
+            v384 = Item::GetGUID(v236) >> 32;
+            v410 = (unsigned __int8)((unsigned __int16)Item::GetGUID(v236) >> 8);
+            v401 = (unsigned __int8)Item::GetGUID(v236);
+            v388 = Item::GetLayedNum(v489);
+            v385 = Item::GetItemTableIndex(v489);
+            v383 = Item::GetGUID(v489) >> 32;
+            v243 = (unsigned __int8)((unsigned __int16)Item::GetGUID(v489) >> 8);
+            v395 = (unsigned __int8)Item::GetGUID(v489);
+            v244 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+            CacheLog(
+              14,
+              "<ITEM> [EXCHANGE] ObjGUID:%X, %s->%s, SourceItemGuid:world(%d)server(%d)serial(%d)itemindex(%d)num(%d), De"
+              "stItemGuid:world(%d)server(%d)serial(%d)itemindex(%d)num(%d), SourceIndex:%d, DestIndex:%d",
+              v244,
+              "Package",
+              "Player Shop",
+              v395,
+              v243,
+              v383,
+              v385,
+              v388,
+              v401,
+              v410,
+              v384,
+              v391,
+              v524,
+              v453,
+              v527);
+            v245 = ItemOperator::ExchangeItem((ItemOperator *)&g_ItemOperator, v438, v453, v426, v527);
+            v246 = 45;
+            v247 = v582;
+            while ( v246 )
+            {
+              *v247++ = 0;
+              --v246;
+            }
+            Item::SaveValueTo(v489, (__m128i *)v582);
+            if ( !(unsigned int)ItemCreateRuler::CheckItemValidity((ItemCreateRuler *)v582, (_ITEM *)v582) )
+            {
+              v568 = 38;
+              (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v567);
+            }
+            if ( v245 < 0 )
+              __assert__(
+                "/home/rtm_wuling/src_mi/Server/Server/Packets/CGItemSynchHandler.cpp",
+                1280,
+                "static uint Packets::CGItemSynchHandler::Execute(Packets::CGItemSynch*, Player*)",
+                "0");
+            v248 = (Item *)(*(__int64 (__fastcall **)(ItemContainer *, _QWORD))(v219[1] + 200LL))(v426, v527);
+            if ( !Item::IsEmpty(v248) )
+            {
+              ITEM_LOG_PARAM::ITEM_LOG_PARAM((ITEM_LOG_PARAM *)v573);
+              HIDWORD(v574) = 213;
+              v249 = Item::GetGUID(v248);
+              HIDWORD(v573[0]) = HIDWORD(v249);
+              LOWORD(v573[0]) = v249;
+              LODWORD(v573[1]) = Item::GetItemTableIndex(v248);
+              v575 = v453;
+              HIDWORD(v573[1]) = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+              v577 = *((_DWORD *)v4 + 9);
+              v578 = *((_DWORD *)v4 + 10);
+              v576 = *(_WORD *)(*((_QWORD *)v4 + 6) + 30LL);
+              v579 = Item::GetItemBind(v248);
+              v580 = Item::GetItemLock(v248);
+              LODWORD(v581) = Item::IsPWLock(v248);
+              SaveItemLog((ITEM_LOG_PARAM *)v573);
+              v250 = (unsigned __int8)PlayerStallBox::IncSerialByIndex((PlayerStallBox *)v219, v527);
+              v454 = Item::GetLayedNum(v489);
+              v541 = Item::GetItemTableIndex(v489);
+              v251 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+              RecordOpt::Excute(3, *((_DWORD *)v216 + 4) + 501368, v251, v541, v454, v252);
+              v542 = Item::GetLayedNum(v248);
+              v253 = Item::GetItemTableIndex(v248);
+              v254 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+              RecordOpt::Excute(2, *((_DWORD *)v216 + 4) + 501368, v254, v253, v542, v255);
+              v591 = 2;
+              v592 = 0;
+              v593 = 4;
+              v594 = v527;
+              v596 = HIDWORD(v563);
+              v595 = v563;
+              v256 = *((_BYTE *)v216 + 164592) + 1;
+              *((_BYTE *)v216 + 164592) = v256;
+              v598 = 24;
+              LOWORD(v599[0]) = v508;
+              WORD1(v599[0]) = v553;
+              WORD2(v599[0]) = v521;
+              LODWORD(v599[1]) = v560;
+              BYTE4(v599[1]) = v469;
+              LODWORD(v599[2]) = v250;
+              BYTE4(v599[2]) = v256;
+              (*(void (__fastcall **)(Packets::CGItemSynch *, _QWORD *))(*(_QWORD *)a2 + 48LL))(a2, v590);
+            }
+            goto LABEL_19;
+          }
+          goto LABEL_282;
+        }
+LABEL_342:
+        v320 = (const char *)StringTable_GetText(125);
+        Obj_Human::SendNoticeAndChatMsg(v4, v320);
+        v321 = HIDWORD(v563);
+        v322 = BYTE1(v563);
+        v323 = (unsigned __int8)v563;
+        v324 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+        v325 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+        CacheLog(
+          1,
+          "ERROR: CGItemSynchHandler::ObjGUID=%X ObjName=%s, item is already IRL_CANEXCHANGE:World = %d, Server = %d, Serial = %d ",
+          v325,
+          v324,
+          v323,
+          v322,
+          v321);
+        goto LABEL_375;
+      }
+LABEL_339:
+      v314 = (const char *)StringTable_GetText(296);
+      Obj_Human::SendNoticeAndChatMsg(v4, v314);
+      v315 = HIDWORD(v563);
+      v316 = BYTE1(v563);
+      v317 = (unsigned __int8)v563;
+      v318 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+      v319 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+      CacheLog(
+        1,
+        "ERROR: CGItemSynchHandler::objGUID=%X ObjName=%s, Item is only YuanBaoTrade:World = %d, Server = %d, Serial = %d ",
+        v319,
+        v318,
+        v317,
+        v316,
+        v315);
+      goto LABEL_375;
+    }
+    goto LABEL_58;
+  }
+LABEL_19:
+  v380 = (const char *)(*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 688LL))(v4);
+  v381 = (*(__int64 (__fastcall **)(Obj_Human *))(*(_QWORD *)v4 + 296LL))(v4);
+  CacheLog(1, "CGItemSynchHandler::ObjGUID=%X ObjName=%s", v381, v380);
+LABEL_375:
+  v590[0] = off_AB8300;
+  Packet::~Packet((Packet *)v590);
+  v567[0] = off_AFF118;
+  Packet::~Packet((Packet *)v567);
+  return 2;
+}
